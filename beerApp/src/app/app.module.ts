@@ -16,9 +16,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AngularFireModule} from 'angularfire2';
 
-
-
-// NEED TO DO: IMPORT KEYS.txt
+import * as keys from '../../../keys';
 
 
 @NgModule({
@@ -32,7 +30,7 @@ import { AngularFireModule} from 'angularfire2';
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(keys.firebaseConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [

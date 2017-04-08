@@ -7,9 +7,8 @@ import { AppComponent } from './app.component';
 
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
+import * as keys from '../../../keys';
 
- // Initialize Firebase
-// NEED TO DO: IMPORT KEYS.txt
 
 @NgModule({
   declarations: [
@@ -19,7 +18,7 @@ import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(keys.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
