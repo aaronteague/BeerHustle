@@ -1,0 +1,115 @@
+.fix-div {
+    
+    height:100%;
+    position:fixed;
+    padding-left:10px;
+    top:0px;
+    left:0px;
+    max-width:400px;
+	width:100%;
+	margin:0 auto;
+}
+
+.error{
+    background: red;
+}
+
+.crud-icons{
+    margin:15px 0 0 0;
+    float:left;
+}
+
+#wrapper{
+   left:50%;
+    width:50%;
+    
+    
+    position:relative;
+}
+
+.my-drop-zone {
+    border:dotted 3px lightgrey;
+}
+
+.nv-file-over {
+    border: dotted 3px red;
+}
+
+.another-file-over-class {
+    border: dotted 3px green;
+}
+
+.tabbed{
+        width: 40%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+
+#contact {
+	background:steelblue;
+	padding:25px;
+	margin:50px 0;
+    border-radius: 15px;
+}
+
+.previewImg{
+    width:200px;
+    height:200px;
+    left: 10%;
+    
+}
+
+#listItem{
+    border-radius: 25px;
+    background: cadetblue;
+    padding: 10px 20px 10px 20px;
+    margin-bottom: 20px;
+    overflow: auto;
+    /*height: 150;*/
+}
+
+#thumbnail{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 0px 10px 0px 5px;
+    height: 150px;
+    float: left;
+}
+
+.listingTitle{
+    font-size:50px;
+}
+
+fieldset {
+	border: medium none !important;
+	margin: 0 0 10px;
+	
+	padding: 0;
+	width: 80%;
+}
+
+#input[type="url"], #contact textarea {
+	width:100%;
+	border:1px solid #CCC;
+	background:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+}
+
+h3 {
+    color: #F96;
+    display: block;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+ul{
+    list-style-type: none;
+}
