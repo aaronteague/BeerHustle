@@ -15,9 +15,11 @@
 
 <ion-content padding>
 
-<ion-item (keyup)="searchList()">
+<!--<ion-item (keyup)="searchList()">
   <ion-input type="search" placeholder="find your beer!" [(ngModel)]="currentSearch"  ></ion-input>
-</ion-item>
+</ion-item>-->
+
+<ion-searchbar (ionInput)="searchList($event)"></ion-searchbar>
 
 <ion-list>
   <ion-item  *ngFor="let item of searchedList">

@@ -17,8 +17,8 @@ export class BeerSearchPage {
 
   searchedList: any[];
   fullList: any[];
-  currentSearch: string;
-  testString: string = "C";
+  //currentSearch: string;
+  //testString: string = "C";
 
   constructor(public dataService: DataService, public navCtrl: NavController, public navParams: NavParams) {}
 
@@ -28,10 +28,10 @@ export class BeerSearchPage {
 
   }
 
-  searchList(){
-    let query = this.currentSearch;
+  searchList(ev: any){
+    let query = ev.target.value;
     //console.log(query);
-    this.searchedList = this.fullList.filter(this.containsSearchParams, this.testString);
+    this.searchedList = this.fullList.filter(this.containsSearchParams, query);
     
   }
 
