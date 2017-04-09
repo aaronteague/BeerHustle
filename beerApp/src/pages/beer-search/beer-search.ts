@@ -23,25 +23,21 @@ export class BeerSearchPage {
   constructor(public dataService: DataService, public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BeerSearchPage');
+    
     this.dataService.getBeerListing().subscribe(list => this.fullList = list, e => console.log(e));
 
   }
 
   searchList(){
     let query = this.currentSearch;
-    console.log(query);
-    this.searchedList = this.fullList.filter(function(el){
-      return el.indexOf(query) > -1;
-    });
+    //console.log(query);
+    this.searchedList = this.fullList.filter(this.containsSearchParams, this.testString);
     
-    //this.searchedList = this.fullList.filter(this.containsSearchParams, this.testString);
-    //console.log(this.currentSearch);
   }
 
-  containsSearchParams(item: any, test: any): boolean{
-    console.log(test);
-    return item.title.toLowerCase().includes(test);
+  containsSearchParams(item: any): boolean{
+    let searchString = String(this);
+    return item.title.toLowerCase().includes(searchString.toLowerCase());
   }
 
 }
