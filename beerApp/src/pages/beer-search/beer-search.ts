@@ -20,7 +20,10 @@ export class BeerSearchPage {
   
   beerSelection = {
     featured: [],
-    rest: []
+
+    rest: [
+
+    ]
   };
 
   constructor(public dataService: DataService, public navCtrl: NavController, public navParams: NavParams) {}
@@ -32,6 +35,10 @@ export class BeerSearchPage {
   }
 
   buildBeerSelection(){
+      this.beerSelection = {
+        featured: [],
+        rest: []
+      }
       // get the featured items out of the list
       this.beerSelection.featured = this.fullList.filter(beer =>  (beer.hasOwnProperty('featured') && beer.featured) );
       
@@ -42,6 +49,7 @@ export class BeerSearchPage {
       return !this.beerSelection.featured.find(featuredBeer => featuredBeer.title == beer.title);
       
     });
+
     
   }
 

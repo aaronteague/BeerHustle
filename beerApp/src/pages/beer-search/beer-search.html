@@ -21,7 +21,7 @@
 
 <ion-searchbar (ionInput)="searchList($event)"></ion-searchbar>
 
-<ion-list>
+<ion-list *ngIf="searchedList">
   <ion-item  *ngFor="let item of searchedList">
     <ion-thumbnail item-left>
       <img src="{{item.filePath}}">
@@ -30,6 +30,17 @@
     <p>{{item.description}}</p>
   </ion-item>
 </ion-list>
+
+<ion-grid text-center *ngIf="!searchedList">
+  <ion-row *ngFor="let featuredItem of beerSelection.featured">
+      <ion-col>{{featuredItem.title}}</ion-col>
+  </ion-row>
+  <ion-row wrap>
+    <ion-col width-50  *ngFor="let item of beerSelection.rest">
+      {{item.title}}
+    </ion-col>
+  </ion-row>
+</ion-grid>
 
 
 </ion-content>
