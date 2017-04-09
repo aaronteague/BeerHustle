@@ -1,3 +1,26 @@
 page-profile {
 
+.profileInfo{
+    text-align: center;
+}
+
+.profileInfo p{
+    
+}
+
+.profileInfo h1 {
+    color: blue;
+}
+
+.profileInfo ion-buttons{
+    position: fixed;
+    bottom: 10%;
+    width: 100%;
+    text-align: left;
+}
+
+.profileInfo button {
+    width: 45%;
+}
+
 }
