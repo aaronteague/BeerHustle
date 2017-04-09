@@ -14,10 +14,25 @@
 
 
 <ion-content padding>
+<div  *ngIf="userInfo">
+  <h1>Level: {{getLevel()}}</h1>
+
+
+  <p> <b>{{userInfo.points}}</b><br>points</p>
+
+
+
+  <p>{{userInfo.FirstName}} {{userInfo.LastName}} </p>
+  
+
+
   <ion-buttons>
-    <button ion-button (click)="logOut()">Log the fuck Out</button>
+    <button ion-button (click)="editProfile()"> Edit Profile </button>
+    <button ion-button (click)="logOut()">Log Out</button>
   </ion-buttons>
 
-  <ion-content *ngIf="textItem">{{textItem}}</ion-content>
+  <!--<ion-content *ngIf="textItem">{{textItem}}</ion-content>-->
+
+</div>
 
 </ion-content>

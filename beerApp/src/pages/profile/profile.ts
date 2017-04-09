@@ -19,7 +19,8 @@ import {FirebaseObjectObservable} from 'angularfire2';
 export class ProfilePage {
 
   auth: any = null;
-  textItem: any;
+  userInfo: any;
+  
   
   //result: string;
 
@@ -33,18 +34,26 @@ export class ProfilePage {
       this.auth = auth;
 
        if(!auth){
-         this.textItem = null;
+         this.userInfo = null;
         return;
        }
-      this.dataService.getUserData().subscribe(snapshot => {this.textItem = snapshot.result; console.log(snapshot.result)}, e => {console.log(e); this.textItem = null}); //.subscribe(result => {this.textItem; console.log(result)});
+      this.dataService.getUserData().subscribe(snapshot => {this.userInfo = snapshot; console.log(snapshot.result)}, e => {console.log(e); this.userInfo = null});
     }, e => {});
   }
 
   logOut(){
-    this.textItem = null;
+    this.userInfo = null;
     this.auth = null;
     this.dataService.logout();
 
+  }
+
+  editProfile(){
+
+  }
+
+  getLevel(): string{
+    return "blue";
   }
 
 }

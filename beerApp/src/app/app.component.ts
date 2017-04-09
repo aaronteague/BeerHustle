@@ -20,7 +20,7 @@ import { DataService } from '../providers/data-service';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = BeerSearchPage;
+  rootPage: any = ProfilePage;
   //authKey: any;
 
   pages: Array<{title: string, component: any}>;
