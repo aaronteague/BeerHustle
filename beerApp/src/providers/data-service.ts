@@ -52,6 +52,10 @@ export class DataService {
     return this.af.database.object('/Users/' + firebase.auth().currentUser.uid);
   }
 
+  saveUserData(dataToPersist: any): firebase.Promise<any>{
+    return firebase.database().ref('/Users/' + firebase.auth().currentUser.uid).set(dataToPersist);
+  }
+
   logout(){
     this.af.auth.logout();
   }

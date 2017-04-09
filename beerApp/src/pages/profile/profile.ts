@@ -6,12 +6,10 @@ import { DataService } from '../../providers/data-service';
 import {FirebaseObjectObservable} from 'angularfire2';
 
 
-/*
-  Generated class for the Profile page.
+import { EditProfilePagePage } from '../edit-profile-page/edit-profile-page';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+
+
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html'
@@ -24,7 +22,10 @@ export class ProfilePage {
   
   //result: string;
 
-  constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public dataService: DataService) {}
+  constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public dataService: DataService) 
+  {
+    
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
@@ -49,7 +50,12 @@ export class ProfilePage {
   }
 
   editProfile(){
-
+     let modal = this.modalCtrl.create(EditProfilePagePage, {userInfo : this.userInfo});
+     modal.onDidDismiss(data => {
+       if(data)
+         this.dataService.saveUserData(data).catch(e => console.log(e));
+     });
+     modal.present();
   }
 
   getLevel(): string{

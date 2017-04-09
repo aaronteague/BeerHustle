@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { DataService } from '../../providers/data-service';
 
-/*
-  Generated class for the BeerSearch page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+
+
 @Component({
   selector: 'page-beer-search',
   templateUrl: 'beer-search.html'
@@ -26,7 +23,9 @@ export class BeerSearchPage {
     ]
   };
 
-  constructor(public dataService: DataService, public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public modalCtrl: ModalController, public dataService: DataService, public navCtrl: NavController, public navParams: NavParams) 
+  {
+  }
 
   ionViewDidLoad() {
     

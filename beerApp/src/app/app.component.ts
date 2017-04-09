@@ -13,6 +13,9 @@ import { ProfilePage } from '../pages/profile/profile';
 import { DataService } from '../providers/data-service';
 
 
+
+
+
 @Component({
   templateUrl: 'app.html',
   providers: [DataService]
@@ -67,6 +70,8 @@ export class MyApp {
           console.log(auth);
         else
           this.presentLoginScreen();
+
+        
       });
     });
   }
