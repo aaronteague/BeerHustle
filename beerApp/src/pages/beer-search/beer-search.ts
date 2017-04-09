@@ -17,22 +17,41 @@ export class BeerSearchPage {
 
   searchedList: any[];
   fullList: any[];
-  //currentSearch: string;
-  //testString: string = "C";
+  
+  beerSelection = {
+    featured: [],
+    rest: []
+  };
 
   constructor(public dataService: DataService, public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
     
-    this.dataService.getBeerListing().subscribe(list => this.fullList = list, e => console.log(e));
+    this.dataService.getBeerListing().subscribe(list => {this.fullList = list; this.buildBeerSelection();}, e => console.log(e));
+    
+  }
 
+  buildBeerSelection(){
+      // get the featured items out of the list
+      this.beerSelection.featured = this.fullList.filter(beer =>  (beer.hasOwnProperty('featured') && beer.featured) );
+      
+      // get the rest of the items
+       this.beerSelection.rest = this.fullList.filter(beer => 
+    {
+      // return that it is already in the featured catagory
+      return !this.beerSelection.featured.find(featuredBeer => featuredBeer.title == beer.title);
+      
+    });
+    
   }
 
   searchList(ev: any){
     let query = ev.target.value;
-    //console.log(query);
-    this.searchedList = this.fullList.filter(this.containsSearchParams, query);
-    
+
+    if(query.length == 0)
+      this.searchedList = [];
+    else
+      this.searchedList = this.fullList.filter(this.containsSearchParams, query);
   }
 
   containsSearchParams(item: any): boolean{
