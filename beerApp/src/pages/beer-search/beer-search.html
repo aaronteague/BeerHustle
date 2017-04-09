@@ -5,10 +5,15 @@
   Ionic pages and navigation.
 -->
 <ion-header>
+  <ion-toolbar>
+    <!--<ion-buttons start>
+      <ion-icon name="search"></ion-icon>
+    </ion-buttons>
+    <ion-title>Beer Selection</ion-title>-->
+    <ion-searchbar (ionInput)="searchList($event)"></ion-searchbar>
+  </ion-toolbar>
 
-  <ion-navbar>
-    <ion-title>BeerSearch</ion-title>
-  </ion-navbar>
+
 
 </ion-header>
 
@@ -19,7 +24,7 @@
   <ion-input type="search" placeholder="find your beer!" [(ngModel)]="currentSearch"  ></ion-input>
 </ion-item>-->
 
-<ion-searchbar (ionInput)="searchList($event)"></ion-searchbar>
+
 
 <ion-list *ngIf="searchedList">
   <ion-item  *ngFor="let item of searchedList">
@@ -33,14 +38,24 @@
 
 <ion-grid text-center *ngIf="!searchedList">
   <ion-row *ngFor="let featuredItem of beerSelection.featured">
-      <ion-col>{{featuredItem.title}}</ion-col>
+      <ion-col width-100 style="padding:0;margin:0;">
+        <ion-card class="featured">
+          <img src="{{featuredItem.filePath}}">
+          <p>{{featuredItem.title}}</p>
+        </ion-card>
+        </ion-col>
   </ion-row>
-  <ion-row wrap>
-    <ion-col width-50  *ngFor="let item of beerSelection.rest">
-      {{item.title}}
+  <ion-row wrap >
+    <ion-col width-50 *ngFor="let item of beerSelection.rest"  style="padding:0;margin:0;">
+      <ion-card  class="rest"  >
+        <img src="{{item.filePath}}">
+        <p>{{item.title}}</p>
+      </ion-card>
     </ion-col>
   </ion-row>
 </ion-grid>
 
 
 </ion-content>
+
+

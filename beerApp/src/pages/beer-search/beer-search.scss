@@ -1,3 +1,50 @@
 page-beer-search {
 
+.cropped {
+    object-fit: cover;
+}
+
+.featured {
+    height: 150px;
+    overflow: hidden;
+
+}
+
+.featured img {
+    position: relative;
+    top: -250px;
+}
+
+.featured p {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    text-align: left;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+}
+
+.rest {
+    height: 100px;
+    overflow: hidden;
+}
+
+.rest img {
+    position: relative;
+}
+
+.rest p {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    text-align: left;
+    font-size: 1.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+}
+
+
 }
