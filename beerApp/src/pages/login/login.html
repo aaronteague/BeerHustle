@@ -14,6 +14,12 @@
 
 
 <ion-content padding>
+  <ion-item>
+    <ion-input type="text" placeholder="Email address" [(ngModel)]="email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="password" placeholder="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
 <button ion-button (click)="login()">Login</button>
 <button ion-button (click)="signUp()">Sign Up</button>
 </ion-content>

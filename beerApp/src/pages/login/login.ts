@@ -20,16 +20,16 @@ var authKey: any;
 })
 export class LoginPage {
 
+  email: string = "";
+  password: string = "";
+
   constructor(public modalCtrl: ModalController, public viewCtrl: ViewController, public dataService: DataService, public navCtrl: NavController, public navParams: NavParams) { }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-    //this.af.auth.login({email: 'aaron.teague@outlook.com', password: 'butterscotch'});
-    
   }
 
   login(){
-    this.dataService.loginEmail('aaron.teague@outlook.com', 'butterscotch').then(auth => 
+    this.dataService.loginEmail(this.email, this.password).then(auth => 
     {
       if(auth){
         this.viewCtrl.dismiss();

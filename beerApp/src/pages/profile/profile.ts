@@ -28,7 +28,6 @@ export class ProfilePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
     this.dataService.getAuthState().subscribe(auth =>
     {
      
@@ -38,7 +37,17 @@ export class ProfilePage {
          this.userInfo = null;
         return;
        }
-      this.dataService.getUserData().subscribe(snapshot => {this.userInfo = snapshot; console.log(snapshot.result)}, e => {console.log(e); this.userInfo = null});
+      this.dataService.getUserData().subscribe(snapshot => 
+      {
+        if(snapshot)
+          this.userInfo = snapshot;
+        else{
+          console.log('nullifying bro');
+          this.userInfo = null;
+        }
+        
+      }
+      , e => {console.log('nullifying so'); this.userInfo = null});
     }, e => {});
   }
 
