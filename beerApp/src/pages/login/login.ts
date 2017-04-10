@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 
 import { DataService } from '../../providers/data-service';
+import { SignUpPage } from '../sign-up-page/sign-up-page';
+
 
 /*
   Generated class for the Login page.
@@ -18,7 +20,7 @@ var authKey: any;
 })
 export class LoginPage {
 
-  constructor(public viewCtrl: ViewController, public dataService: DataService, public navCtrl: NavController, public navParams: NavParams) { }
+  constructor(public modalCtrl: ModalController, public viewCtrl: ViewController, public dataService: DataService, public navCtrl: NavController, public navParams: NavParams) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
@@ -37,15 +39,31 @@ export class LoginPage {
   }
 
   signUp(){
-    this.dataService.signUp('aaron.teague@outlook.com', 'butterscotch')
-    .then(auth => {
-      if(auth)
-        this.navCtrl.pop();
-      
-    })
-    .catch(e => {
-      console.log(e);
+    
+    let modal = this.modalCtrl.create(SignUpPage);
+    modal.onDidDismiss(credentials => {
+      console.log("dismissed signup modal");
+      if(credentials){ // if we got a valid login and password
+           this.dataService.signUp(credentials.email, credentials.password)
+            .then(auth => {
+              if(auth)
+              this.navCtrl.pop();
+            }).catch(e => {
+              console.log(e);
+            });
+      }
     });
+    modal.present();
+
+    // this.dataService.signUp('aaron.teague@outlook.com', 'butterscotch')
+    // .then(auth => {
+    //   if(auth)
+    //     this.navCtrl.pop();
+      
+    // })
+    // .catch(e => {
+    //   console.log(e);
+    // });
   }
 
 

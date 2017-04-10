@@ -6,6 +6,7 @@ import { Page2 } from '../pages/page2/page2';
 
 //import { EditProfilePagePage } from '../pages/edit-profile-page/edit-profile-page';
 import { EditProfilePagePage } from '../pages/edit-profile-page/edit-profile-page';
+import { SignUpPage } from '../pages/sign-up-page/sign-up-page';
 
 import { LoginPage } from '../pages/login/login';
 import { BeerSearchPage } from '../pages/beer-search/beer-search';
@@ -37,7 +38,8 @@ import * as keys from '../../../keys';
     MyApp,
     EditProfilePagePage,
     BeerSearchPage,
-    ProfilePage
+    ProfilePage,
+    SignUpPage
     
   ],
   imports: [
@@ -52,8 +54,8 @@ import * as keys from '../../../keys';
     MyApp,
     EditProfilePagePage,
     BeerSearchPage,
-    ProfilePage
-    
+    ProfilePage,
+    SignUpPage
   ],
   providers: [
     StatusBar,
