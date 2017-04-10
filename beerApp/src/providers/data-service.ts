@@ -15,10 +15,13 @@ export class DataService {
 
   authKey: any;
 
-  constructor(public http: Http, public af: AngularFire) {
-    console.log('Hello DataService Provider');
-    //this.authKey = localStorage.getItem('authKey');
-    
+  defaultUserInfo = {
+    FirstName: 'FN',
+    LastName: 'LN',
+    points: 0
+  }
+
+  constructor(public http: Http, public af: AngularFire) {   
   }
 
   isLoggedIn(): boolean{
@@ -60,13 +63,16 @@ export class DataService {
     this.af.auth.logout();
   }
 
-  signUp(email: string, password: string): firebase.Promise<FirebaseAuthState>{
+  signUp(email: string, password: string, firstName: string, lastName: string): firebase.Promise<FirebaseAuthState>{
     var creds: any = {email: email, password: password };
     return this.af.auth.createUser(creds).then(auth => {
       if(!auth)
         return;
       let userEntry = firebase.database().ref('Users').child(auth.uid);
-      userEntry.set("We are in!")
+      let newUser = this.defaultUserInfo;
+      newUser.FirstName = firstName;
+      newUser.LastName = lastName;
+      userEntry.set(newUser);
     });
     
   }
@@ -83,7 +89,6 @@ export class DataService {
     this.authKey = key;
     this.af.auth.getAuth().auth.getToken().then(result => localStorage.setItem('authKey', result)).catch(e => console.log(e));
     //localStorage.setItem('authKey', this.af.auth.getAuth().auth.getToken());
-    console.log("storing this: ", key);
   }
 
 }

@@ -44,7 +44,7 @@ export class LoginPage {
     modal.onDidDismiss(credentials => {
       console.log("dismissed signup modal");
       if(credentials){ // if we got a valid login and password
-           this.dataService.signUp(credentials.email, credentials.password)
+           this.dataService.signUp(credentials.email, credentials.password, credentials.firstName, credentials.lastName)
             .then(auth => {
               if(auth)
               this.navCtrl.pop();

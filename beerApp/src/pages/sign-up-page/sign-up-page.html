@@ -15,7 +15,12 @@
 
 <ion-card>
 <ion-card-header> Create an account! </ion-card-header>
-
+<ion-item>
+  <ion-input type="text" placeholder="First Name" [(ngModel)]="firstName"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-input type="text" placeholder="Last Name" [(ngModel)]="lastName"></ion-input>
+</ion-item>
 <ion-item>
   <ion-input type="text" placeholder="email address" [(ngModel)]="email"></ion-input>
 </ion-item>
