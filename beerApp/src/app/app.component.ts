@@ -65,14 +65,19 @@ export class MyApp {
       //if(!this.dataService.isLoggedIn())
         //this.presentLoginScreen();
 
-      this.dataService.getAuthState().subscribe(auth =>{
-        if(auth)
-          console.log(auth);
+      // this.dataService.getAuthState().subscribe(auth =>{
+      //   if(auth)
+      //     console.log(auth);
+      //   else
+      //     this.presentLoginScreen();
+      this.dataService.getAuthState(user => {
+        if(user)
+          console.log(user);
         else
           this.presentLoginScreen();
-
-        
       });
+        
+      
     });
   }
 

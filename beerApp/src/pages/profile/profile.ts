@@ -16,7 +16,7 @@ import { EditProfilePagePage } from '../edit-profile-page/edit-profile-page';
 })
 export class ProfilePage {
 
-  auth: any = null;
+  //auth: any = null;
   userInfo: any;
   
   
@@ -28,32 +28,41 @@ export class ProfilePage {
   }
 
   ionViewDidLoad() {
-    this.dataService.getAuthState().subscribe(auth =>
-    {
-     
-      this.auth = auth;
-
-       if(!auth){
-         this.userInfo = null;
-        return;
-       }
-      this.dataService.getUserData().subscribe(snapshot => 
-      {
-        if(snapshot)
-          this.userInfo = snapshot;
-        else{
-          console.log('nullifying bro');
-          this.userInfo = null;
-        }
-        
+    this.dataService.getAuthState(user => {
+      console.log(user);
+      if(user){
+       this.userInfo = user;
+       
       }
-      , e => {console.log('nullifying so'); this.userInfo = null});
-    }, e => {});
+      else
+        this.userInfo = null;
+    });
+    // this.dataService.getAuthState().subscribe(auth =>
+    // {
+     
+    //   this.auth = auth;
+
+    //    if(!auth){
+    //      this.userInfo = null;
+    //     return;
+    //    }
+    //   this.dataService.getUserData().subscribe(snapshot => 
+    //   {
+    //     if(snapshot)
+    //       this.userInfo = snapshot;
+    //     else{
+    //       console.log('nullifying bro');
+    //       this.userInfo = null;
+    //     }
+        
+    //   }
+    //   , e => {console.log('nullifying so'); this.userInfo = null});
+    // }, e => {});
   }
 
   logOut(){
     this.userInfo = null;
-    this.auth = null;
+    //this.auth = null;
     this.dataService.logout();
 
   }

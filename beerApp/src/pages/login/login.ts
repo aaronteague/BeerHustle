@@ -38,6 +38,8 @@ export class LoginPage {
     }).catch(e => console.log(e));
   }
 
+  
+
   signUp(){
     
     let modal = this.modalCtrl.create(SignUpPage);
@@ -54,16 +56,10 @@ export class LoginPage {
       }
     });
     modal.present();
+  }
 
-    // this.dataService.signUp('aaron.teague@outlook.com', 'butterscotch')
-    // .then(auth => {
-    //   if(auth)
-    //     this.navCtrl.pop();
-      
-    // })
-    // .catch(e => {
-    //   console.log(e);
-    // });
+  loginGoogle(){
+    this.dataService.loginGoogle();
   }
 
 
