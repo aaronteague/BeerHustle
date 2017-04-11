@@ -20,7 +20,7 @@ The application is built with a strong backend of Google's Firebase, from Authen
 
 ### Instructions to build ###
 1. Clone or download this repo
-2. Place keys.ts file in root of directory
+2. Place keys.js file in root of cloned directory
 3.  Build Ionic app 
  * a. Open beerApp folder in Visual Studio Code
  * b. Run this command in terminal: npm install
