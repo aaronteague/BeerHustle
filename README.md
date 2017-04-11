@@ -15,7 +15,8 @@ The application is built with a strong backend of Google's Firebase, from Authen
 ### Make sure you have the following dependencies: ###
 1. Visual Studio Code - Installed
 2. Node.js - Installed
-3. keys.ts - Must request, required for firebase
+3. Run in terminal or Command Prompt as Administrator: npm install -g ionic
+4. keys.ts - Upon request, required for firebase
 
 ### Instructions to build ###
 1. Clone or download this repo
