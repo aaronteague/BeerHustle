@@ -28,9 +28,7 @@ export class BeerSearchPage {
   }
 
   ionViewDidLoad() {
-    
-    this.dataService.getBeerListing().subscribe(list => {this.fullList = list; this.buildBeerSelection();}, e => console.log(e));
-    
+    this.dataService.getBeerListing(beerList => {this.fullList = beerList; this.buildBeerSelection(); console.log(this.fullList)});
   }
 
   buildBeerSelection(){

@@ -17,7 +17,9 @@ import { EditProfilePagePage } from '../edit-profile-page/edit-profile-page';
 export class ProfilePage {
 
   //auth: any = null;
-  userInfo: any;
+  userProfile: any = null;
+  userExtraData: any;
+  //pointsNumber: number = 0;
   
   
   //result: string;
@@ -28,47 +30,24 @@ export class ProfilePage {
   }
 
   ionViewDidLoad() {
-    this.dataService.getAuthState(user => {
-      console.log(user);
-      if(user){
-       this.userInfo = user;
-       
-      }
-      else
-        this.userInfo = null;
-    });
-    // this.dataService.getAuthState().subscribe(auth =>
-    // {
-     
-    //   this.auth = auth;
+    this.userProfile = this.dataService.getUser();
 
-    //    if(!auth){
-    //      this.userInfo = null;
-    //     return;
-    //    }
-    //   this.dataService.getUserData().subscribe(snapshot => 
-    //   {
-    //     if(snapshot)
-    //       this.userInfo = snapshot;
-    //     else{
-    //       console.log('nullifying bro');
-    //       this.userInfo = null;
-    //     }
-        
-    //   }
-    //   , e => {console.log('nullifying so'); this.userInfo = null});
-    // }, e => {});
+    this.dataService.getUserAdditionalData().then(e => this.userExtraData = e.val());
+    
   }
 
+
+
   logOut(){
-    this.userInfo = null;
-    //this.auth = null;
+    this.userProfile = null;
+    this.userExtraData = null;
+    
     this.dataService.logout();
 
   }
 
   editProfile(){
-     let modal = this.modalCtrl.create(EditProfilePagePage, {userInfo : this.userInfo});
+     let modal = this.modalCtrl.create(EditProfilePagePage, {userInfo : this.userProfile});
      modal.onDidDismiss(data => {
        if(data)
          this.dataService.saveUserData(data).catch(e => console.log(e));

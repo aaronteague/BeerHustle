@@ -29,13 +29,7 @@ export class LoginPage {
   }
 
   login(){
-    this.dataService.loginEmail(this.email, this.password).then(auth => 
-    {
-      if(auth){
-        this.viewCtrl.dismiss();
-      }
-        // this.navCtrl.pop();
-    }).catch(e => console.log(e));
+    this.dataService.loginEmail(this.email, this.password);
   }
 
   

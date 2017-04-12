@@ -5,7 +5,9 @@ import {Observable} from 'rxjs/Rx';
 //import 'rxjs/add/operator/promise';
 
 import * as firebase from 'firebase';
-import {AngularFire, FirebaseListObservable, AuthProviders, AuthMethods, FirebaseAuthState, FirebaseObjectObservable} from 'angularfire2';
+//import {AngularFire, FirebaseListObservable, AuthProviders, AuthMethods, FirebaseAuthState, FirebaseObjectObservable} from 'angularfire2';
+import * as keys from '../../../keys';
+
 
 
 
@@ -13,79 +15,77 @@ import {AngularFire, FirebaseListObservable, AuthProviders, AuthMethods, Firebas
 @Injectable()
 export class DataService {
 
-  // authKey: any;
+
 
    defaultUserInfo = {
      points: 0
    }
 
-  userInfo: any;
 
-  constructor(public http: Http, public af: AngularFire) {   
+  constructor(public http: Http) {   
+    firebase.initializeApp(keys.firebaseConfig);
   }
 
-  isLoggedIn(): boolean{
-    console.log(firebase.auth().currentUser);
-    return firebase.auth().currentUser ? true : false;
+
+
+  getUser(): firebase.User{
+    return firebase.auth().currentUser;
   }
 
-  getAuthState(onStateChangeFunction: any): any{
-    return firebase.auth().onAuthStateChanged(user => {
-      this.userInfo = user;
-      this.addUserVariablesIfNeeded(user);
-      onStateChangeFunction(user);
-      
-    });
+  monitorAuthStatus(onUserAuthChangeFunction: any){
+    firebase.auth().onAuthStateChanged(user => onUserAuthChangeFunction(user) );  
   }
 
-  loginEmail(email: string, password: string): firebase.Promise<FirebaseAuthState>{
-    return this.af.auth.login({email, password}, {provider: AuthProviders.Password,method: AuthMethods.Password});
+   getUserAdditionalData(): firebase.Promise<any> {
+     return firebase.database().ref('/Users/' + firebase.auth().currentUser.uid).once('value');
+   }
+
+  loginEmail(email: string, password: string){
   }
 
   addUserVariablesIfNeeded(user: any){
     let userData = firebase.database().ref('/Users').child(user.uid);
-
     userData.once('value', snapshot => {
       if(!snapshot.val())
         userData.set(this.defaultUserInfo);
     });
   }
 
-  getUserData(): FirebaseObjectObservable<any>{
-    console.log('/Users/' + firebase.auth().currentUser.uid);
-    return this.af.database.object('/Users/' + firebase.auth().currentUser.uid);
-  }
 
   saveUserData(dataToPersist: any): firebase.Promise<any>{
     return firebase.database().ref('/Users/' + firebase.auth().currentUser.uid).set(dataToPersist);
   }
 
   logout(){
-    this.af.auth.logout();
+    firebase.auth().signOut();
   }
 
-  signUp(email: string, password: string, firstName: string, lastName: string): firebase.Promise<FirebaseAuthState>{
-    return firebase.auth().createUserWithEmailAndPassword(email, password).then(resolve => {
-      this.getAuthState(user => {
-        if(user)
-          user.updateProfile({
-            displayName: firstName + " " + lastName
-          });
-      });
+  signUp(email: string, password: string, firstName: string, lastName: string): firebase.Promise<any>{
+    return firebase.auth().createUserWithEmailAndPassword(email, password).then(() => 
+    {
+      firebase.auth().currentUser.updateProfile(
+        {
+          displayName: firstName + " " + lastName, 
+          photoURL: "https://firebasestorage.googleapis.com/v0/b/beerapp-7f31b.appspot.com/o/defaultProfilePic.jpg?alt=media&token=c7469d20-e9d7-44ab-b798-4d4adcaea3b3"
+        })
     });
   }
 
-  getBeerListing(): FirebaseListObservable<any>{
-    return this.af.database.list('BeerList');
-  }
-
-
-
-  saveAuth(key: any){
+  getBeerListing(onChangeFunction: any){
     
-    this.af.auth.getAuth().auth.getToken().then(result => localStorage.setItem('authKey', result)).catch(e => console.log(e));
-    //localStorage.setItem('authKey', this.af.auth.getAuth().auth.getToken());
+    firebase.database().ref('BeerList').once('value', function(snapshot) {
+      let beerArray: any[] = [];
+      snapshot.forEach(function(childSnapshot){
+        beerArray.push(childSnapshot.val());
+        return false;
+      });
+      onChangeFunction(beerArray);
+    });
+
   }
+
+
+
 
     loginGoogle(){
     // var googleProvider = new firebase.auth.GoogleAuthProvider();

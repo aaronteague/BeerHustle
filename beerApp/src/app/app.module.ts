@@ -25,9 +25,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 
-import { AngularFireModule} from 'angularfire2';
-
-import * as keys from '../../../keys';
+// import { AngularFireModule} from 'angularfire2';
 
 
 @NgModule({
@@ -43,8 +41,7 @@ import * as keys from '../../../keys';
     
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(keys.firebaseConfig)
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -61,8 +58,7 @@ import * as keys from '../../../keys';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DataService,
-    AngularFireModule
+    DataService
   ]
 })
 export class AppModule {}

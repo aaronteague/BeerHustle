@@ -23,7 +23,7 @@ import { DataService } from '../providers/data-service';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ProfilePage;
+  rootPage: any = LoginPage;
   //authKey: any;
 
   pages: Array<{title: string, component: any}>;
@@ -40,20 +40,15 @@ export class MyApp {
   }
 
   initializeApp() {
-    // this.dataService.getAuthState().subscribe(authState => {
-    //   if(!authState)
-    //     this.presentLoginScreen();
-    //   console.log(authState);
-    // });
+    // decide first if we need this user to log in, we do this first
+    // as the network will be the bottleneck
+      this.dataService.monitorAuthStatus(user => {
+        if(user)
+          this.nav.setRoot(ProfilePage);
+        else
+          this.nav.setRoot(LoginPage);
+      });
 
-
-    
-    // this.dataService.loggedIn().then(successful => 
-    // {
-    //   if(!successful)
-    //    this.presentLoginScreen();
-
-    // }).catch(e => {console.log(e); this.presentLoginScreen();});
 
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -61,21 +56,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       
-      //this.presentLoginScreen();
-      //if(!this.dataService.isLoggedIn())
-        //this.presentLoginScreen();
 
-      // this.dataService.getAuthState().subscribe(auth =>{
-      //   if(auth)
-      //     console.log(auth);
-      //   else
-      //     this.presentLoginScreen();
-      this.dataService.getAuthState(user => {
-        if(user)
-          console.log(user);
-        else
-          this.presentLoginScreen();
-      });
         
       
     });

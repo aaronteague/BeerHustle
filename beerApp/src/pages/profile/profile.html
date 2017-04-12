@@ -14,15 +14,15 @@
 
 
 <ion-content padding>
-<div  *ngIf="userInfo" class="profileInfo">
+<div  *ngIf="userProfile" class="profileInfo">
   <h1>Level: {{getLevel()}}</h1>
 
 
-  <p> <b>17</b><br>points</p>
+  <p *ngIf="userExtraData"> {{userExtraData.points}} <br> points</p>
 
 
 
-  <h1>{{userInfo.displayName}} </h1>
+  <h1>{{userProfile.displayName}} </h1>
   
 
 
