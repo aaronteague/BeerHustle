@@ -15,11 +15,9 @@ export class DataService {
 
   // authKey: any;
 
-  // defaultUserInfo = {
-  //   FirstName: 'FN',
-  //   LastName: 'LN',
-  //   points: 0
-  // }
+   defaultUserInfo = {
+     points: 0
+   }
 
   userInfo: any;
 
@@ -32,13 +30,25 @@ export class DataService {
   }
 
   getAuthState(onStateChangeFunction: any): any{
-    return firebase.auth().onAuthStateChanged(user => {this.userInfo = user; onStateChangeFunction(user);});
+    return firebase.auth().onAuthStateChanged(user => {
+      this.userInfo = user;
+      this.addUserVariablesIfNeeded(user);
+      onStateChangeFunction(user);
+      
+    });
   }
 
   loginEmail(email: string, password: string): firebase.Promise<FirebaseAuthState>{
     return this.af.auth.login({email, password}, {provider: AuthProviders.Password,method: AuthMethods.Password});
+  }
 
-  
+  addUserVariablesIfNeeded(user: any){
+    let userData = firebase.database().ref('/Users').child(user.uid);
+
+    userData.once('value', snapshot => {
+      if(!snapshot.val())
+        userData.set(this.defaultUserInfo);
+    });
   }
 
   getUserData(): FirebaseObjectObservable<any>{
