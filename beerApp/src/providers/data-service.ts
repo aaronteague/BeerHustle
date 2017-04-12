@@ -33,7 +33,9 @@ export class DataService {
   }
 
   monitorAuthStatus(onUserAuthChangeFunction: any){
-    firebase.auth().onAuthStateChanged(user => onUserAuthChangeFunction(user) );  
+    firebase.auth().onAuthStateChanged(user => {onUserAuthChangeFunction(user); 
+      this.addUserVariablesIfNeeded(user);
+    });  
   }
 
    getUserAdditionalData(): firebase.Promise<any> {
@@ -68,47 +70,37 @@ export class DataService {
           displayName: firstName + " " + lastName, 
           photoURL: "https://firebasestorage.googleapis.com/v0/b/beerapp-7f31b.appspot.com/o/defaultProfilePic.jpg?alt=media&token=c7469d20-e9d7-44ab-b798-4d4adcaea3b3"
         })
+      //this.addUserVariablesIfNeeded(firebase.auth().currentUser);
     });
   }
 
   getBeerListing(onChangeFunction: any){
-    
-    firebase.database().ref('BeerList').once('value', function(snapshot) {
-      let beerArray: any[] = [];
+
+    let refreshBeerArray = (snapshot: any) => {
+            let beerArray: any[] = [];
       snapshot.forEach(function(childSnapshot){
         beerArray.push(childSnapshot.val());
         return false;
       });
-      onChangeFunction(beerArray);
-    });
 
+      onChangeFunction(beerArray);
+    };
+
+    let fbList = firebase.database().ref('BeerList');
+
+    fbList.once('value', refreshBeerArray);
   }
 
 
 
 
     loginGoogle(){
-    // var googleProvider = new firebase.auth.GoogleAuthProvider();
-    // firebase.auth().signInWithRedirect(googleProvider).then(result => {
-    //   // this gives you a google access token.  You can use it to access the google api
-    //   var token = result.credential.accessToken;
-    
-    //   // the signed-in user info.
-    //   var user = result.user;
+     var googleProvider = new firebase.auth.GoogleAuthProvider();
+     firebase.auth().signInWithRedirect(googleProvider).then(result => {
 
-    //   // check if user content exists, create if needed
-    //   let userEntry = firebase.database().ref('Users').child(result.credential.uid);
-    //   userEntry.once('value', snapshot => {
-    //     if(snapshot.val() === null) // looks like there isn't data here, let's make some
-    //       userEntry.set(this.defaultUserInfo);
-    //   })
-      
-    // }).catch(error => {
-    //   // uh oh, got some error, handle it bruh
-    //   console.log(error.message);
       
 
-    // });
+     });
   }
 
 }
