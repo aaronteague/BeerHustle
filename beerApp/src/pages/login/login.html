@@ -1,26 +1,36 @@
-<!--
-  Generated template for the Login page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
+<ion-content padding class="background" scroll="false">
+  
+  <img src="assets/placeholder.png" alt="your brand">
 
-  <ion-navbar>
-    <ion-title>login</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
+  <ion-card class="prettyCard">
+    
+    
   <ion-item>
-    <ion-input type="text" placeholder="Email address" [(ngModel)]="email"></ion-input>
+     <ion-icon name="mail" item-left></ion-icon>
+    <ion-input type="text" placeholder="E-mail address" [(ngModel)]="email"></ion-input>
+   
   </ion-item>
+  
   <ion-item>
+    <ion-icon name="lock" item-left></ion-icon>
     <ion-input type="password" placeholder="password" [(ngModel)]="password"></ion-input>
   </ion-item>
-<button ion-button (click)="loginGoogle()">Sign in using Google Account</button>
-<button ion-button (click)="login()">Login</button>
-<button ion-button (click)="signUp()">Sign Up</button>
+  </ion-card>
+
+  <button ion-button block (click)="login()"><ion-icon name="google"></ion-icon>Sign in</button>
+
+  <hr>
+
+  <button ion-button (click)="loginGoogle()" block>Sign in using Google</button>
+
+  <ion-row>
+    <ion-col item-left>
+      <p>Forgot password?</p>
+    </ion-col>
+    <ion-col item-right>
+      <p style="text-justify: right" (click)="signUp()">Register</p>
+    </ion-col>
+  </ion-row>
+<!--<button ion-button (click)="signUp()">Sign Up</button>-->
 </ion-content>

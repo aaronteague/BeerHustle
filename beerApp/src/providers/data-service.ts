@@ -34,7 +34,7 @@ export class DataService {
 
   monitorAuthStatus(onUserAuthChangeFunction: any){
     firebase.auth().onAuthStateChanged(user => {onUserAuthChangeFunction(user); 
-      this.addUserVariablesIfNeeded(user);
+      if(user)this.addUserVariablesIfNeeded(user);
     });  
   }
 
@@ -43,6 +43,7 @@ export class DataService {
    }
 
   loginEmail(email: string, password: string){
+    firebase.auth().signInWithEmailAndPassword(email, password);
   }
 
   addUserVariablesIfNeeded(user: any){

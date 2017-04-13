@@ -1,3 +1,30 @@
 page-login {
+     .background {
+         background: color($colors, background);
+        position:fixed;
+     }
 
+
+    .prettyCard {
+        background: color($colors, background);
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .prettyCard ion-item {
+        width: 100%;
+        margin: 0;
+       
+        
+    }
+
+    hr {
+    width: 80%;
+    height: 8px;
+    background-color:black;
+    color:black;
+    border: 0 none;
+
+    }
 }
