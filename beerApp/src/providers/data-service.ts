@@ -21,6 +21,13 @@ export class DataService {
      points: 0
    }
 
+   defaultBeerDesign = {
+     flexWidth: 50,
+     imgOffsetX: 0,
+     imgOffsetY: 0,
+     textColor: "#fff"
+   }
+
 
   constructor(public http: Http) {   
     firebase.initializeApp(keys.firebaseConfig);
@@ -36,6 +43,14 @@ export class DataService {
     firebase.auth().onAuthStateChanged(user => {onUserAuthChangeFunction(user); 
       if(user)this.addUserVariablesIfNeeded(user);
     });  
+  }
+
+  addDesignDataIfNeeded(beerItem: any){
+    console.log(beerItem);
+    // if(!beerItem.val().design){
+    //   console.log("looks like design data doesn't exist for this item, let's create it");
+    //   beerItem.child('design').set(this.defaultBeerDesign);
+    // }
   }
 
    getUserAdditionalData(): firebase.Promise<any> {
@@ -80,6 +95,8 @@ export class DataService {
     let refreshBeerArray = (snapshot: any) => {
             let beerArray: any[] = [];
       snapshot.forEach(function(childSnapshot){
+        
+        this.addDesignDataIfNeeded(childSnapshot);
         beerArray.push(childSnapshot.val());
         return false;
       });
