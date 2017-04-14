@@ -35,8 +35,9 @@
         </ion-col>
   </ion-row>
   <ion-row wrap >
+        <!--https://forum.ionicframework.com/t/how-to-set-ion-grid-col-width-dynamically/58045/5-->
     <ion-col width-50 *ngFor="let item of beerSelection.rest"  style="padding:0;margin:0;">
-      <ion-card  class="rest"  >
+      <ion-card  class="rest" >
         <img src="{{item.filePath}}">
         <p>{{item.title}}</p>
       </ion-card>

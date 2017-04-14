@@ -50,6 +50,10 @@ export class BeerSearchPage {
     
   }
 
+  getWidth(): string {
+    return "width-33";
+  }
+
   searchList(ev: any){
     let query = ev.target.value;
 
