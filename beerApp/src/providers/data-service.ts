@@ -96,7 +96,7 @@ export class DataService {
             let beerArray: any[] = [];
       snapshot.forEach(function(childSnapshot){
         
-        this.addDesignDataIfNeeded(childSnapshot);
+        //this.addDesignDataIfNeeded(childSnapshot);
         beerArray.push(childSnapshot.val());
         return false;
       });

@@ -1,5 +1,9 @@
 page-beer-search {
 
+.background {
+    background: color($colors, background)
+}
+
 .cropped {
     object-fit: cover;
 }
@@ -31,12 +35,15 @@ page-beer-search {
     width: 100%;
     height: 130px;
     overflow: hidden;
-    margin: 3px;
-    padding: 3px;
+    margin: 0;
+    padding: 0;
 }
 
 .rest img {
     position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 .rest p {

@@ -1,6 +1,6 @@
 
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
 
     <ion-searchbar (ionInput)="searchList($event)"></ion-searchbar>
   </ion-toolbar>
@@ -10,7 +10,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content class="background">
 
 
 
@@ -35,7 +35,7 @@
         </ion-col>
   </ion-row>
   <ion-row wrap >
-    <ion-col width-{{item.design.flexWidth}} *ngFor="let item of beerSelection.rest"  style="padding:0;margin:0;">
+    <ion-col width-50 *ngFor="let item of beerSelection.rest"  style="padding:0;margin:0;">
       <ion-card  class="rest"  >
         <img src="{{item.filePath}}">
         <p>{{item.title}}</p>
