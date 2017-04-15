@@ -104,7 +104,7 @@ export class DataService {
       onChangeFunction(beerArray);
     };
 
-    let fbList = firebase.database().ref('BeerList');
+    let fbList = firebase.database().ref('BeerList').orderByChild('index');
 
     fbList.once('value', refreshBeerArray);
   }

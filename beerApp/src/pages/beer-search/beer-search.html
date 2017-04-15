@@ -40,8 +40,8 @@
         <!--http://ionicframework.com/docs/components/#grid-->
     <ion-col width-50 *ngFor="let item of beerSelection.rest"  style="padding:0;margin:0;">
       <ion-card  class="rest" >
-        <img src="{{item.filePath}}">
-        <p>{{item.title}}</p>
+        <img src="{{item.filePath}}" (load)="loadedImg()" [ngStyle]="{'bottom': move(item.design.imgOffsetY), 'left': move(item.design.imgOffsetX)}" >
+        <p [ngStyle]="{'color': item.design.textColor}">{{item.title}}</p>
       </ion-card>
     </ion-col>
   </ion-row>
