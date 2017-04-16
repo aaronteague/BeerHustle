@@ -13,7 +13,8 @@ import { BeerSearchPage } from '../pages/beer-search/beer-search';
 import { ProfilePage } from '../pages/profile/profile';
 import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 import { ProductPage } from '../pages/product/product';
-
+import {PurchasePage} from '../pages/purchase/purchase';
+ 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -41,7 +42,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfilePage,
     SignUpPage,
     ForgotPasswordPage,
-    ProductPage
+    ProductPage,
+    PurchasePage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -56,7 +58,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfilePage,
     SignUpPage,
     ForgotPasswordPage,
-    ProductPage
+    ProductPage,
+    PurchasePage
   ],
   providers: [
     StatusBar,

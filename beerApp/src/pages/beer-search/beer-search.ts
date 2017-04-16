@@ -104,7 +104,7 @@ export class BeerSearchPage {
   }
 
   openProduct(product: any){
-    console.log(product);
+    //console.log(product);
     this.navCtrl.push(ProductPage, {
       'product': product
     });

@@ -1,3 +1,21 @@
 page-product {
 
+ion-content {
+    // filter: blur(10px);
+}
+
+h1 {
+    text-align: center;
+}
+
+img {
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.debug p {
+    display:inline;
+}
 }

@@ -3,7 +3,6 @@ import { NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { DataService } from '../../providers/data-service';
 
-import {FirebaseObjectObservable} from 'angularfire2';
 
 
 import { EditProfilePagePage } from '../edit-profile-page/edit-profile-page';

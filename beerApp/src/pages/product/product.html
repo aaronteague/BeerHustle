@@ -13,8 +13,23 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding [@makeBlur]="blur">
 
-  <p>{{product.title}}</p>
+  <h1>{{product.title}}</h1>
+
+  <img src="{{product.filePath}}">
+
+  <p>{{product.description}}</p>
+
+  <ion-row class="debug">
+    <ion-col width-50>
+    <button ion-button full (click)="orderItem()"> Order </button>
+    </ion-col>
+    <ion-col width-50>
+    <button ion-button (click)="subtractOneQuantity()"><ion-icon name="remove"></ion-icon> </button>
+    <p>{{purchaseMultiplier}}</p>
+    <button ion-button (click)="addOneQuantity()"><ion-icon name="add"></ion-icon></button>
+    </ion-col>
+  </ion-row>
 
 </ion-content>
