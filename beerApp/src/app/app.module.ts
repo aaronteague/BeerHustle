@@ -12,6 +12,7 @@ import { LoginPage } from '../pages/login/login';
 import { BeerSearchPage } from '../pages/beer-search/beer-search';
 import { ProfilePage } from '../pages/profile/profile';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -39,7 +40,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    BrowserAnimationsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

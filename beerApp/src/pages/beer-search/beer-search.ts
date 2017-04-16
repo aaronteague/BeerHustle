@@ -1,26 +1,49 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, Content } from 'ionic-angular';
 
-import { animations } from '@angular/platform-browser/animations';
+import {trigger,state,style,animate,transition} from '@angular/animations';
 
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
+
+
+
+
+
 
 import { DataService } from '../../providers/data-service';
 
 
-
+export class BeerItem {
+  index: number;
+  name: string;
+  description: string;
+  filePath: string;
+  design = {
+    imgOffsetX: 0,
+    imgOffset: 0,
+    textColor: "#fff"
+  };
+  itemLoaded: string = 'invisable';
+}
 
 @Component({
   selector: 'page-beer-search',
   templateUrl: 'beer-search.html',
+  animations: [
+     trigger('phaseIn', [
+      state('invisable', style({
+         opacity: 0
+       })),
+       state('visable', style({
+         opacity: 1
+       })),
+       transition('* => visable', animate('.5s ease-in'))
+     ])
+   ]
  
 })
+
+
+
 export class BeerSearchPage {
 
   searchedList: any[];
@@ -33,6 +56,8 @@ export class BeerSearchPage {
 
     ]
   };
+
+
 
   constructor(public modalCtrl: ModalController, public dataService: DataService, public navCtrl: NavController, public navParams: NavParams) 
   {
@@ -63,6 +88,15 @@ export class BeerSearchPage {
       
     });
 
+    this.beerSelection.rest.map(ji => {
+      let bi: BeerItem = new BeerItem();
+      bi.name = ji.name;
+      bi.index = ji.index;
+      bi.description = ji.description;
+      bi.design = ji.design;
+      bi.filePath = ji.filePath;
+    });
+
     
   }
 
@@ -85,6 +119,11 @@ export class BeerSearchPage {
   containsSearchParams(item: any): boolean{
     let searchString = String(this);
     return item.title.toLowerCase().includes(searchString.toLowerCase());
+  }
+
+  itemLoaded(item: BeerItem){
+    item.itemLoaded = 'visable';
+    console.log("changed this item to " + item.itemLoaded);
   }
 
 }
