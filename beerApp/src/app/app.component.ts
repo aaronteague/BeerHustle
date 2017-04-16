@@ -42,7 +42,7 @@ export class MyApp {
     // as the network will be the bottleneck
       this.dataService.monitorAuthStatus(user => {
         if(user)
-          this.nav.setRoot(BeerSearchPage);
+          this.nav.setRoot(ProfilePage);
         else
           this.nav.setRoot(LoginPage);
       });
@@ -60,11 +60,11 @@ export class MyApp {
     });
   }
 
-  presentLoginScreen(){
-    let loginScreenModal = this.modalCtrl.create(LoginPage);
-    loginScreenModal.present();
-    //this.nav.push(LoginPage);
-  }
+  // presentLoginScreen(){
+  //   let loginScreenModal = this.modalCtrl.create(LoginPage);
+  //   loginScreenModal.present();
+  //   //this.nav.push(LoginPage);
+  // }
 
   openPage(page) {
     // Reset the content nav to have just this page

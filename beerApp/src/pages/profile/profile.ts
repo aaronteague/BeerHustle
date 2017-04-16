@@ -31,7 +31,7 @@ export class ProfilePage {
 
   ionViewDidLoad() {
     this.userProfile = this.dataService.getUser();
-
+    //console.log(this.userProfile);
     this.dataService.getUserAdditionalData().then(e => this.userExtraData = e.val());
     
   }
