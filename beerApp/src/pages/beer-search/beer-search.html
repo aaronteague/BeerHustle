@@ -29,9 +29,9 @@
 
 <ion-grid text-center *ngIf="!searchedList">
   <ion-row *ngFor="let featuredItem of beerSelection.featured">
-      <ion-col width-100 style="padding:0;margin:0;">
-        <ion-card class="featured">
-          <img src="{{featuredItem.filePath}}">
+      <ion-col [@phaseIn]="featuredItem.itemLoaded" width-100 style="padding:0;margin:0;" >
+        <ion-card class="featured" (click)="openProduct(featuredItem)">
+          <img src="{{featuredItem.filePath}}" (load)="itemLoaded(featuredItem)">
           <p>{{featuredItem.title}}</p>
         </ion-card>
         </ion-col>
@@ -41,7 +41,7 @@
         <!--http://stackoverflow.com/questions/41181491/ionic-2-multiple-ion-item-in-a-row-->
         <!--http://ionicframework.com/docs/components/#grid-->
     <ion-col width-50 *ngFor="let item of beerSelection.rest"  style="padding:0;margin:0;">
-      <ion-card  class="rest" [@phaseIn]="item.itemLoaded">
+      <ion-card  class="rest" [@phaseIn]="item.itemLoaded" (click)="openProduct(item)">
         <img src="{{item.filePath}}" (load)="itemLoaded(item)"  [ngStyle]="{'bottom': move(item.design.imgOffsetY), 'left': move(item.design.imgOffsetX)}" >
         <p [ngStyle]="{'color': item.design.textColor}">{{item.title}}</p>
       </ion-card>

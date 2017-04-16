@@ -3,6 +3,7 @@ import { NavController, NavParams, ViewController, ModalController } from 'ionic
 
 import { DataService } from '../../providers/data-service';
 import { SignUpPage } from '../sign-up-page/sign-up-page';
+import { ForgotPasswordPage } from '../forgot-password/forgot-password';
 
 
 /*
@@ -12,7 +13,7 @@ import { SignUpPage } from '../sign-up-page/sign-up-page';
   Ionic pages and navigation.
 */
 
-var authKey: any;
+//var authKey: any;
 
 @Component({
   selector: 'page-login',
@@ -32,24 +33,26 @@ export class LoginPage {
     this.dataService.loginEmail(this.email, this.password);
   }
 
-  
+  forgotPassword(){
+    this.navCtrl.push(ForgotPasswordPage);
+  }
 
   signUp(){
-    
-    let modal = this.modalCtrl.create(SignUpPage);
-    modal.onDidDismiss(credentials => {
-      console.log("dismissed signup modal");
-      if(credentials){ // if we got a valid login and password
-           this.dataService.signUp(credentials.email, credentials.password, credentials.firstName, credentials.lastName)
-            .then(auth => {
-              if(auth)
-              this.navCtrl.pop();
-            }).catch(e => {
-              console.log(e);
-            });
-      }
-    });
-    modal.present();
+    this.navCtrl.push(SignUpPage);
+    // let modal = this.modalCtrl.create(SignUpPage);
+    // modal.onDidDismiss(credentials => {
+    //   console.log("dismissed signup modal");
+    //   if(credentials){ // if we got a valid login and password
+    //        this.dataService.signUp(credentials.email, credentials.password, credentials.firstName, credentials.lastName)
+    //         .then(auth => {
+    //           if(auth)
+    //           this.navCtrl.pop();
+    //         }).catch(e => {
+    //           console.log(e);
+    //         });
+    //   }
+    // });
+    // modal.present();
   }
 
   loginGoogle(){

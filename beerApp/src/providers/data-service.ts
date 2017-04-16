@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import {Observable} from 'rxjs/Rx';
+//import {Observable} from 'rxjs/Rx';
 //import 'rxjs/add/operator/promise';
 
 import * as firebase from 'firebase';
@@ -119,6 +119,12 @@ export class DataService {
       
 
      });
+  }
+
+  sendReset(email: string){
+    firebase.auth().sendPasswordResetEmail(email)
+    .then(resolve => console.log("successfully sent"))
+    .catch(e => console.log(e.message));
   }
 
 }

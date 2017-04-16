@@ -3,6 +3,8 @@ import { NavController, NavParams, ModalController, Content } from 'ionic-angula
 
 import {trigger,state,style,animate,transition} from '@angular/animations';
 
+import {ProductPage} from '../../pages/product/product';
+
 
 
 
@@ -12,18 +14,18 @@ import {trigger,state,style,animate,transition} from '@angular/animations';
 import { DataService } from '../../providers/data-service';
 
 
-export class BeerItem {
-  index: number;
-  name: string;
-  description: string;
-  filePath: string;
-  design = {
-    imgOffsetX: 0,
-    imgOffset: 0,
-    textColor: "#fff"
-  };
-  itemLoaded: string = 'invisable';
-}
+// export class BeerItem {
+//   index: number;
+//   name: string;
+//   description: string;
+//   filePath: string;
+//   design = {
+//     imgOffsetX: 0,
+//     imgOffset: 0,
+//     textColor: "#fff"
+//   };
+//   itemLoaded: string = 'invisable';
+// }
 
 @Component({
   selector: 'page-beer-search',
@@ -88,19 +90,25 @@ export class BeerSearchPage {
       
     });
 
-    this.beerSelection.rest.map(ji => {
-      let bi: BeerItem = new BeerItem();
-      bi.name = ji.name;
-      bi.index = ji.index;
-      bi.description = ji.description;
-      bi.design = ji.design;
-      bi.filePath = ji.filePath;
-    });
+    // this.beerSelection.rest.map(ji => {
+    //   let bi: BeerItem = new BeerItem();
+    //   bi.name = ji.name;
+    //   bi.index = ji.index;
+    //   bi.description = ji.description;
+    //   bi.design = ji.design;
+    //   bi.filePath = ji.filePath;
+    //   return bi;
+    // });
 
     
   }
 
-
+  openProduct(product: any){
+    console.log(product);
+    this.navCtrl.push(ProductPage, {
+      'product': product
+    });
+  }
 
   move(amount: number): string {
     return amount + "px"
@@ -121,9 +129,9 @@ export class BeerSearchPage {
     return item.title.toLowerCase().includes(searchString.toLowerCase());
   }
 
-  itemLoaded(item: BeerItem){
+  itemLoaded(item: any){
     item.itemLoaded = 'visable';
-    console.log("changed this item to " + item.itemLoaded);
+    
   }
 
 }

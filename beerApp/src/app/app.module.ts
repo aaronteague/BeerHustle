@@ -11,6 +11,9 @@ import { SignUpPage } from '../pages/sign-up-page/sign-up-page';
 import { LoginPage } from '../pages/login/login';
 import { BeerSearchPage } from '../pages/beer-search/beer-search';
 import { ProfilePage } from '../pages/profile/profile';
+import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
+import { ProductPage } from '../pages/product/product';
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -36,8 +39,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     EditProfilePagePage,
     BeerSearchPage,
     ProfilePage,
-    SignUpPage
-    
+    SignUpPage,
+    ForgotPasswordPage,
+    ProductPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -50,7 +54,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     EditProfilePagePage,
     BeerSearchPage,
     ProfilePage,
-    SignUpPage
+    SignUpPage,
+    ForgotPasswordPage,
+    ProductPage
   ],
   providers: [
     StatusBar,

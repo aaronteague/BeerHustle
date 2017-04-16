@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, ToastController } from 'ionic-angular';
+
+import { DataService } from '../../providers/data-service'
 
 /*
   Generated class for the SignUpPage page.
@@ -18,9 +20,13 @@ export class SignUpPage {
   firstName: string = "";
   lastName: string = "";
 
-  constructor(public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public toastCtrl: ToastController, public dataService: DataService, public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
+  }
+
+  Cancel() {
+    this.navCtrl.pop();
   }
 
   CreateAccount(){
@@ -28,7 +34,7 @@ export class SignUpPage {
       this.displayError("We need a valid first name");
     else if(this.lastName.length == 0)
       this.displayError("We need a valid last name");
-    if(this.email.length == 0)
+    else if(this.email.length == 0)
       this.displayError("We need a valid email");
     else if(this.password.length == 0)
       this.displayError("First password field is blank");
@@ -38,12 +44,27 @@ export class SignUpPage {
       this.displayError("Passwords do not match" + this.password + this.passwordRetyped);
     else if(this.password.length < 6 || this.passwordRetyped.length < 6)
       this.displayError("Password must be atleast 6 characters");
-    else
-      this.viewCtrl.dismiss({'email': this.email, 'password': this.password, 'firstName': this.firstName, 'lastName': this.lastName});
+    else{
+      this.dataService.signUp(this.email, this.password, this.firstName, this.lastName).then(user => {
+      if(user)
+        this.navCtrl.pop()
+      }).catch(e => {
+        this.displayError(e.message);
+      });
+      //this.viewCtrl.dismiss({'email': this.email, 'password': this.password, 'firstName': this.firstName, 'lastName': this.lastName});
+      
+    }
+
+
   }
 
   displayError(error: string){
     console.log(error);
+    let toast = this.toastCtrl.create({
+      message: error,
+      duration: 3000
+    });
+    toast.present();
   }
 
 }
