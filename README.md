@@ -32,3 +32,5 @@ The application is built with a strong backend of Google's Firebase, from Authen
  * d. Navigate here in your web browser: localhost:4200
 
 
+## Here's a preview of what I have so far: ##
+![alt tag](https://github.com/aaronteague/BeerHustle/blob/master/Additional%20Files/BeerAppProgress.png)
