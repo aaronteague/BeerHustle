@@ -10,7 +10,14 @@ import * as keys from '../../../keys';
 
 
 
-
+export class Order{
+     quantity: number = 0;
+    total: number = 0;
+     item: string = "none";
+     paymentType: string = "cash";
+     payment: string = "pending";
+     delivered: boolean = false;
+}
 
 @Injectable()
 export class DataService {
@@ -28,12 +35,25 @@ export class DataService {
      textColor: "#fff"
    }
 
+  
+
+  //  defaultOrder = {
+  //    quantity: 0,
+  //    total: 0,
+  //    item: "none",
+  //    paymentType: "cash",
+  //    payment: "pending",
+  //    delivered: false
+  //  }
+
 
   constructor(public http: Http) {   
     firebase.initializeApp(keys.firebaseConfig);
   }
 
-
+  submitOrder(itemName: string, quantity: number, total: number, paymentType: string){
+    let order = this.defaultOrder;
+  }
 
   getUser(): firebase.User{
     return firebase.auth().currentUser;
@@ -47,10 +67,7 @@ export class DataService {
 
   addDesignDataIfNeeded(beerItem: any){
     console.log(beerItem);
-    // if(!beerItem.val().design){
-    //   console.log("looks like design data doesn't exist for this item, let's create it");
-    //   beerItem.child('design').set(this.defaultBeerDesign);
-    // }
+
   }
 
    getUserAdditionalData(): firebase.Promise<any> {

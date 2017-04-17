@@ -13,10 +13,24 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class PurchasePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  product: any;
+  quantity: number;
+  price: number;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) 
+  {
+    this.product = navParams.get('product');
+    this.quantity = navParams.get('quantity');
+
+    this.price = this.product.price * this.quantity;
+  }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PurchasePage');
+    //console.log('ionViewDidLoad PurchasePage');
+  }
+
+  cancel(){
+    this.navCtrl.pop();
   }
 
 }

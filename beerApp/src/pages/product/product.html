@@ -14,8 +14,14 @@
 
 
 <ion-content padding [@makeBlur]="blur">
-
-  <h1>{{product.title}}</h1>
+  <ion-row>
+    <ion-col>
+      <h1>{{product.title}}</h1>
+    </ion-col>
+    <ion-col>
+      <h1>${{product.price | number:'1.2'}}</h1>
+    </ion-col>
+  </ion-row>
 
   <img src="{{product.filePath}}">
 

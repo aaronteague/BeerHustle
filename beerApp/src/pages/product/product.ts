@@ -48,7 +48,10 @@ export class ProductPage {
   }
 
   orderItem() {
-    let modal = this.modalCtrl.create(PurchasePage);
+    let modal = this.modalCtrl.create(PurchasePage, {
+      'product': this.product,
+      'quantity': this.purchaseMultiplier
+    });
     modal.onDidDismiss(() => this.blur = 'clear');
 
     this.blur = 'blur';
