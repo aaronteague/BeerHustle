@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+//import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 //import {Observable} from 'rxjs/Rx';
 //import 'rxjs/add/operator/promise';
@@ -10,14 +10,14 @@ import * as keys from '../../../keys';
 
 
 
-export class Order{
-     quantity: number = 0;
-    total: number = 0;
-     item: string = "none";
-     paymentType: string = "cash";
-     payment: string = "pending";
-     delivered: boolean = false;
-}
+// export class Order{
+//      quantity: number = 0;
+//     total: number = 0;
+//      item: string = "none";
+//      paymentType: string = "cash";
+//      payment: string = "pending";
+//      delivered: boolean = false;
+// }
 
 @Injectable()
 export class DataService {
@@ -47,12 +47,12 @@ export class DataService {
   //  }
 
 
-  constructor(public http: Http) {   
+  constructor() {   
     firebase.initializeApp(keys.firebaseConfig);
   }
 
   submitOrder(itemName: string, quantity: number, total: number, paymentType: string){
-    let order = this.defaultOrder;
+    //let order = this.defaultOrder;
   }
 
   getUser(): firebase.User{

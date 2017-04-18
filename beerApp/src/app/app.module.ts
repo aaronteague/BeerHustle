@@ -5,6 +5,7 @@ import { MyApp } from './app.component';
 // import { Page2 } from '../pages/page2/page2';
 
 //import { EditProfilePagePage } from '../pages/edit-profile-page/edit-profile-page';
+//import { HttpModule } from '@angular/http'; // is this needed?
 import { EditProfilePagePage } from '../pages/edit-profile-page/edit-profile-page';
 import { SignUpPage } from '../pages/sign-up-page/sign-up-page';
 
