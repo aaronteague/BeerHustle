@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { DataService } from '../../providers/data-service';
+
 /*
   Generated class for the Purchase page.
 
@@ -17,7 +19,7 @@ export class PurchasePage {
   quantity: number;
   price: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) 
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataService) 
   {
     this.product = navParams.get('product');
     this.quantity = navParams.get('quantity');
@@ -31,6 +33,10 @@ export class PurchasePage {
 
   cancel(){
     this.navCtrl.pop();
+  }
+
+  makePurchase(type: string){
+    
   }
 
 }

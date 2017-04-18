@@ -10,14 +10,14 @@ import * as keys from '../../../keys';
 
 
 
-// export class Order{
-//      quantity: number = 0;
-//     total: number = 0;
-//      item: string = "none";
-//      paymentType: string = "cash";
-//      payment: string = "pending";
-//      delivered: boolean = false;
-// }
+ export class Order{
+      quantity: number = 0;
+      total: number = 0;
+      itemName: string = "none";
+      paymentType: string = "cash";
+      payment: string = "pending";
+      delivered: boolean = false;
+ }
 
 @Injectable()
 export class DataService {
@@ -47,12 +47,24 @@ export class DataService {
   //  }
 
 
-  constructor() {   
+  constructor() {  
+    console.log("initializing firebase"); 
     firebase.initializeApp(keys.firebaseConfig);
   }
 
   submitOrder(itemName: string, quantity: number, total: number, paymentType: string){
-    //let order = this.defaultOrder;
+    let order = new Order();
+    order.itemName = itemName;
+    order.quantity = quantity;
+    order.total = total;
+    order.paymentType = paymentType;
+
+    let date = new Date();
+    date.toUTCString()
+    let orderEntry = firebase.database().ref('/Orders').child(date.toUTCString());
+
+    console.log(order);
+    orderEntry.set(order);
   }
 
   getUser(): firebase.User{
