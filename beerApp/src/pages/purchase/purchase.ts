@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { DataService } from '../../providers/data-service';
+//import { DataService } from '../../providers/data-service';
 
 /*
   Generated class for the Purchase page.
@@ -15,12 +15,15 @@ import { DataService } from '../../providers/data-service';
 })
 export class PurchasePage {
 
+  dataService: any;
+
   product: any;
   quantity: number;
   price: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public dataService: DataService) 
+  constructor(public navCtrl: NavController, public navParams: NavParams) 
   {
+    this.dataService = navParams.get('dataService');
     this.product = navParams.get('product');
     this.quantity = navParams.get('quantity');
 

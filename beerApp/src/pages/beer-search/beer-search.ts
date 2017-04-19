@@ -66,12 +66,12 @@ export class BeerSearchPage {
   }
 
   ionViewDidLoad() {
-    this.dataService.getBeerListing(beerList => {this.fullList = beerList; this.buildBeerSelection(); console.log(this.fullList)});
+    this.dataService.getBeerListing(beerList => {this.fullList = beerList; this.buildBeerSelection(); });
   }
 
   loadedImg(){
     // https://blog.thecodecampus.de/angular-2-animate-creating-sliding-side-navigation/
-    console.log("loaded image");
+    //console.log("loaded image");
   }
 
   buildBeerSelection(){

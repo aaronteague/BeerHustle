@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { DataService } from '../../providers/data-service';
 
 import {trigger,state,style,animate,transition} from '@angular/animations';
 
@@ -29,7 +30,7 @@ export class ProductPage {
   purchaseMultiplier: number = 1;
   blur: string = 'clear';
 
-  constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) 
+  constructor(public dataService: DataService, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) 
   {
         this.product = this.navParams.get('product');
 
@@ -49,6 +50,7 @@ export class ProductPage {
 
   orderItem() {
     let modal = this.modalCtrl.create(PurchasePage, {
+      'dataService': this.dataService,
       'product': this.product,
       'quantity': this.purchaseMultiplier
     });
