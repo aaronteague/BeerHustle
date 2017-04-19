@@ -15,7 +15,7 @@ import * as keys from '../../../keys';
       total: number = 0;
       itemName: string = "none";
       paymentType: string = "cash";
-      payment: string = "pending";
+      paymentStatus: string = "pending";
       delivered: boolean = false;
  }
 
