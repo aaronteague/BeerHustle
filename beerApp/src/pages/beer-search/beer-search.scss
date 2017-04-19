@@ -4,12 +4,15 @@ page-beer-search {
     background: color($colors, background);
 
 }
+// ion-col {
+//     background-color: pink;
+//     height: 100px;
+// }
 
 
-
-.cropped {
-    object-fit: cover;
-}
+// .cropped {
+//     object-fit: cover;
+// }
 
 .featured {
     height: 180px;
@@ -49,7 +52,7 @@ page-beer-search {
     position: relative;
     margin: 0;
     padding: 0;
-    width: 100%;
+    // width: 100%;
 }
 
 .rest p {
