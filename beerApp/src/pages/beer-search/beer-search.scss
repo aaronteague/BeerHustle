@@ -6,8 +6,9 @@ page-beer-search {
 }
 
 ion-searchbar {
-    $searchbar-ios-input-transition: all 300ms ease;
-    $searchbar-ios-cancel-transition: all 300ms ease;
+    // $searchbar-ios-input-transition: all 300ms ease;
+    // $searchbar-ios-cancel-transition: all 300ms ease;
+    width: 10px;
 }
 
 // ion-col {

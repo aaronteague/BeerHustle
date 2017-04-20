@@ -35,15 +35,14 @@ import { DataService } from '../../providers/data-service';
   templateUrl: 'beer-search.html',
   animations: [
      trigger('slideIn', [
-      state('away', style({
-         opacity: 0,
-         top: 1000
-       })),
-       state('placed', style({
-         opacity: 1,
-         top: 0
-       })),
+      state('away', style({opacity: 0,top: 1000})),
+       state('placed', style({opacity: 1,top: 0})),
        transition('* => placed', animate('.5s ease-out'))
+     ]),
+     trigger('openClose', [
+       state('collapsed, void', style({width: '10px', opacity: 0})),
+       state('expanded', style({width: '100%', opacity: 1})),
+       transition('collapsed <=> expanded', animate('.5s'))
      ])
    ]
  
@@ -58,6 +57,7 @@ export class BeerSearchPage {
   dropList = new Collections.Queue();
   okToDrop: boolean = true;
   dropDelay: number = 50;
+  searchExpand: string = 'collapsed';
 
   searchedList: any[];
   fullList: any[];
@@ -171,6 +171,14 @@ export class BeerSearchPage {
       
     
     
+  }
+
+  expandSearch() {
+
+  }
+
+  dismissSearch() {
+    this.searchExpand = "expanded"
   }
 
 }
