@@ -5,6 +5,10 @@ page-beer-search {
 
 }
 
+ion-searchbar {
+    $searchbar-ios-input-transition: all 300ms ease;
+    $searchbar-ios-cancel-transition: all 300ms ease;
+}
 
 // ion-col {
 //     background-color: pink;
@@ -17,11 +21,13 @@ page-beer-search {
 // }
 
 .featured {
+    position: absolute;
+    top: 25vh;
     height: 180px;
     overflow: hidden;
     width: 100%;
     margin: 0;
-    // opacity: 0;
+     opacity: 0;
 }
 
 .featured img {
@@ -41,7 +47,20 @@ page-beer-search {
     color: #fff;
 }
 
+.featuredCardHolder {
+    width: 100%;
+    height: 180px;
+}
+
+.cardHolder {
+    width: 100%;
+    height: 130px;
+    //background-color: pink;
+}
+
 .rest {
+    position: absolute;
+    top: 50vh;
     width: 100%;
     height: 130px;
     overflow: hidden;

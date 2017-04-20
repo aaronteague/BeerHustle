@@ -5,6 +5,7 @@ Data-Service
 
 1. Implement backend code with firebase to handle monetary transactions.  As it stands now, the payment calculations and handling are handled on the client device's end, which makes it an easy target for scamming individuals.
 2. Apply proper authentication rules to various parts of the database
+3. Implement payment systems with google wallet and paypal
 
 
 

@@ -5,6 +5,9 @@ import {trigger,state,style,animate,transition} from '@angular/animations';
 
 import {ProductPage} from '../../pages/product/product';
 
+//import {Queue} from '../../queue';
+import * as Collections from 'typescript-collections';
+
 
 
 
@@ -31,14 +34,16 @@ import { DataService } from '../../providers/data-service';
   selector: 'page-beer-search',
   templateUrl: 'beer-search.html',
   animations: [
-     trigger('phaseIn', [
-      state('invisable', style({
-         opacity: 0
+     trigger('slideIn', [
+      state('away', style({
+         opacity: 0,
+         top: 1000
        })),
-       state('visable', style({
-         opacity: 1
+       state('placed', style({
+         opacity: 1,
+         top: 0
        })),
-       transition('* => visable', animate('.5s ease-in'))
+       transition('* => placed', animate('.5s ease-out'))
      ])
    ]
  
@@ -47,6 +52,12 @@ import { DataService } from '../../providers/data-service';
 
 
 export class BeerSearchPage {
+
+  // dropList: Queue<any>;
+  // dropList2: any[];
+  dropList = new Collections.Queue();
+  okToDrop: boolean = true;
+  dropDelay: number = 50;
 
   searchedList: any[];
   fullList: any[];
@@ -60,13 +71,18 @@ export class BeerSearchPage {
   };
 
 
+  
 
   constructor(public modalCtrl: ModalController, public dataService: DataService, public navCtrl: NavController, public navParams: NavParams) 
   {
+    // this.dropList = new Queue();
+    // this.dropList2 = [];
   }
 
   ionViewDidLoad() {
     this.dataService.getBeerListing(beerList => {this.fullList = beerList; this.buildBeerSelection(); });
+
+
   }
 
   loadedImg(){
@@ -129,8 +145,31 @@ export class BeerSearchPage {
     return item.title.toLowerCase().includes(searchString.toLowerCase());
   }
 
+  dropNext() {
+    
+    if(this.dropList.size() > 0){
+      this.okToDrop = false;
+      //let item = this.dropList.dequeue();
+      let item = this.dropList.dequeue() as any;
+      // console.log(item);
+      item.itemLoaded = 'placed';
+      //setTimeout(this.dropNext(), 5000)
+      setTimeout(()=>{
+        this.dropNext();
+      }, this.dropDelay);
+    }else
+      this.okToDrop = true;
+  }
+
   itemLoaded(item: any){
-    item.itemLoaded = 'visable';
+    //this.dropList.enqueue(item);
+    //this.dropList2.push(item);
+    this.dropList.enqueue(item);
+    if(this.okToDrop)
+      this.dropNext();
+    
+      
+    
     
   }
 

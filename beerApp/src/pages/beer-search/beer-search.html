@@ -29,8 +29,8 @@
 
 <ion-grid text-center *ngIf="!searchedList">
   <ion-row *ngFor="let featuredItem of beerSelection.featured">
-      <ion-col [@phaseIn]="featuredItem.itemLoaded" width-100 style="padding:0;margin:0;" >
-        <ion-card class="featured" (click)="openProduct(featuredItem)">
+      <ion-col class="featuredCardHolder"  width-100 style="padding:0;margin:0;" >
+        <ion-card class="featured" [@slideIn]="featuredItem.itemLoaded" (click)="openProduct(featuredItem)">
           <img src="{{featuredItem.filePath}}" (load)="itemLoaded(featuredItem)">
           <p>{{featuredItem.title}}</p>
         </ion-card>
@@ -38,8 +38,8 @@
   </ion-row>
   <ion-row wrap >
 
-    <ion-col col-6 *ngFor="let item of beerSelection.rest"  style="padding:0;margin:0;">
-      <ion-card  class="rest" [@phaseIn]="item.itemLoaded" (click)="openProduct(item)">
+    <ion-col class="cardHolder" col-6 *ngFor="let item of beerSelection.rest"  style="padding:0;margin:0;">
+      <ion-card  class="rest" [@slideIn]="item.itemLoaded" (click)="openProduct(item)">
         <img src="{{item.filePath}}" (load)="itemLoaded(item)"  [ngStyle]="{'bottom': move(item.design.imgOffsetY), 'left': move(item.design.imgOffsetX)}" >
         <p [ngStyle]="{'color': item.design.textColor}">{{item.title}}</p>
       </ion-card>
