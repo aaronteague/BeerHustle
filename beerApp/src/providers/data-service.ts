@@ -71,10 +71,10 @@ export class DataService {
     return firebase.auth().currentUser;
   }
 
-  monitorAuthStatus(onUserAuthChangeFunction: any){
+  monitorAuthStatus(onUserAuthChangeFunction: any, onErrorFunction: any){
     firebase.auth().onAuthStateChanged(user => {onUserAuthChangeFunction(user); 
       if(user)this.addUserVariablesIfNeeded(user);
-    });  
+    }, error => {onErrorFunction(error.message)});  
   }
 
   addDesignDataIfNeeded(beerItem: any){
@@ -86,8 +86,8 @@ export class DataService {
      return firebase.database().ref('/Users/' + firebase.auth().currentUser.uid).once('value');
    }
 
-  loginEmail(email: string, password: string){
-    firebase.auth().signInWithEmailAndPassword(email, password);
+  loginEmail(email: string, password: string): firebase.Promise<any> {
+    return firebase.auth().signInWithEmailAndPassword(email, password);
   }
 
   addUserVariablesIfNeeded(user: any){
@@ -141,19 +141,13 @@ export class DataService {
 
 
 
-    loginGoogle(){
+    loginGoogle(): firebase.Promise<any> {
      var googleProvider = new firebase.auth.GoogleAuthProvider();
-     firebase.auth().signInWithRedirect(googleProvider).then(result => {
-
-      
-
-     });
+     return firebase.auth().signInWithRedirect(googleProvider)
   }
 
-  sendReset(email: string){
-    firebase.auth().sendPasswordResetEmail(email)
-    .then(resolve => console.log("successfully sent"))
-    .catch(e => console.log(e.message));
+  sendReset(email: string): firebase.Promise<any>{
+    return firebase.auth().sendPasswordResetEmail(email);
   }
 
 }

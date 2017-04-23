@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, ToastController, AlertController } from 'ionic-angular';
 
 import { DataService } from '../../providers/data-service'
 
@@ -19,8 +19,12 @@ export class SignUpPage {
   passwordRetyped: string = "";
   firstName: string = "";
   lastName: string = "";
+  dataService: DataService;
 
-  constructor(public toastCtrl: ToastController, public dataService: DataService, public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public alertCtrl: AlertController, public toastCtrl: ToastController, public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) 
+  {
+    this.dataService = navParams.get('dataService');
+  }
 
   ionViewDidLoad() {
   }
@@ -46,8 +50,10 @@ export class SignUpPage {
       this.displayError("Password must be atleast 6 characters");
     else{
       this.dataService.signUp(this.email, this.password, this.firstName, this.lastName).then(user => {
-      if(user)
-        this.navCtrl.pop()
+   
+        this.navCtrl.pop();
+        this.displaySuccess();
+      
       }).catch(e => {
         this.displayError(e.message);
       });
@@ -59,12 +65,23 @@ export class SignUpPage {
   }
 
   displayError(error: string){
-    console.log(error);
+    //console.log(error);
     let toast = this.toastCtrl.create({
       message: error,
       duration: 3000
     });
     toast.present();
+  }
+
+  displaySuccess(){
+    console.log("success");
+    let popup = this.alertCtrl.create({
+      title: "Success!",
+      subTitle: "Welcome to Beer Hustle!  Please enjoy your stay!",
+      buttons: ['OK']
+    });
+    //popup.onDidDismiss(() => this.navCtrl.pop());
+    popup.present();
   }
 
 }

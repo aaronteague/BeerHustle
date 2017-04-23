@@ -45,6 +45,8 @@ export class MyApp {
           this.nav.setRoot(BeerSearchPage);
         else
           this.nav.setRoot(LoginPage);
+      }, error => {
+        this.nav.setRoot(LoginPage, {error: error});
       });
 
 

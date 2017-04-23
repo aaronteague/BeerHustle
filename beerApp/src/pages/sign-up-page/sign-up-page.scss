@@ -1,13 +1,30 @@
 page-sign-up-page {
 
+ion-card{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.forceContrast {
+    color: white;
+    display: inline;
+    vertical-align: middle;
+}
+
 .createButton {
-align-content: left;
-
+    position: left;
+    margin: 0px;
+    
 }
 
-.cancelButton {
-float: right;
-
+.inputField {
+    margin-bottom: 5px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
 }
+
+
 
 }

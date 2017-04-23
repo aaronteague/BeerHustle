@@ -1,34 +1,34 @@
 
 <ion-content padding class="background" scroll="false">
   
-  <img src="assets/placeholder.png" alt="your brand">
+  <img src="assets/BeerHustle.png" alt="your brand">
 
-  <ion-card class="prettyCard">
+  <!--<ion-card class="prettyCard">-->
     
     
-  <ion-item>
-     <ion-icon name="mail" item-left></ion-icon>
-    <ion-input type="text" placeholder="E-mail address" [(ngModel)]="email"></ion-input>
+  <ion-item class="input" >
+     <ion-icon   name="mail" item-left></ion-icon>
+    <ion-input  type="text" placeholder="E-mail address" [(ngModel)]="email"></ion-input>
    
   </ion-item>
   
-  <ion-item>
-    <ion-icon name="lock" item-left></ion-icon>
-    <ion-input type="password" placeholder="password" [(ngModel)]="password"></ion-input>
+  <ion-item class="input">
+    <ion-icon   name="lock" item-left></ion-icon>
+    <ion-input  type="password" placeholder="password" [(ngModel)]="password"></ion-input>
   </ion-item>
-  </ion-card>
+  <!--</ion-card>-->
 
   <button ion-button block (click)="login()"><ion-icon name="google"></ion-icon>Sign in</button>
 
   <hr>
 
-  <button ion-button (click)="loginGoogle()" block>Sign in using Google</button>
+  <button ion-button color="google" (click)="loginGoogle()" block>Sign in using Google</button>
 
   <ion-row>
     <ion-col item-left>
       <p (click)="forgotPassword()">Forgot password?</p>
     </ion-col>
-    <ion-col item-right>
+    <ion-col item-right class="moveRight">
       <p style="text-justify: right" (click)="signUp()">Register</p>
     </ion-col>
   </ion-row>
