@@ -29,14 +29,29 @@ export class ProductPage {
   product: any;
   purchaseMultiplier: number = 1;
   blur: string = 'clear';
+  toggleMessage: string = 'Read More';
+  currentDescriptionText: string;
+  shortSize = 300;
+
 
   constructor(public dataService: DataService, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) 
   {
         this.product = this.navParams.get('product');
 
+        if(this.product.description.length > this.shortSize)
+          this.currentDescriptionText = this.product.description.substring(0, this.shortSize);
+        else
+          this.currentDescriptionText = this.product.description;
+
+        console.log(this.currentDescriptionText);
   }
 
-  ionViewDidLoad() { }
+  ionViewDidLoad() 
+  {
+    // the following is test code while I'm working on the purchase screen
+    // TEST CODE , TEST TEST TEST
+    
+  }
 
   addOneQuantity() {
     if(this.purchaseMultiplier < 7)
@@ -59,5 +74,16 @@ export class ProductPage {
     this.blur = 'blur';
     modal.present();
   }
+
+  toggleTextLenght(){
+    if(this.toggleMessage === "Read More")
+      this.currentDescriptionText = this.product.description;
+    else
+      this.currentDescriptionText = this.product.description.substring(0, this.shortSize);
+
+      this.toggleMessage = (this.toggleMessage === "Read More") ? "Read Less" : "Read More";
+  }
+
+  
 
 }

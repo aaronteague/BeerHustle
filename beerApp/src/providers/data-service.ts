@@ -52,19 +52,21 @@ export class DataService {
     firebase.initializeApp(keys.firebaseConfig);
   }
 
-  submitOrder(itemName: string, quantity: number, total: number, paymentType: string){
+  submitOrder(itemName: string, quantity: number, total: number, paymentType: string): firebase.Promise<any>{
     let order = new Order();
     order.itemName = itemName;
     order.quantity = quantity;
     order.total = total;
     order.paymentType = paymentType;
 
+    if(paymentType != "Cash")
+      order.paymentStatus = "Complete";
+
     let date = new Date();
-    date.toUTCString()
     let orderEntry = firebase.database().ref('/Orders').child(date.toUTCString());
 
-    console.log(order);
-    orderEntry.set(order);
+
+    return orderEntry.set(order);
   }
 
   getUser(): firebase.User{

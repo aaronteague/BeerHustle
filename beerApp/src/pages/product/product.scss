@@ -6,16 +6,63 @@ ion-content {
 
 h1 {
     text-align: center;
+    display: inline;
 }
 
 img {
-    height: 300px;
+    height: 33%;
     width: 100%;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
     object-fit: cover;
+}
+
+p {
+    color: white;
+    overflow: hidden;
+    padding: 7px;
 }
 
 .debug p {
     display:inline;
 }
+
+.moveRight {
+    width: 100%;        
+    padding: 7px;
+    margin: 0px;
+    text-align: right;
+}
+
+h1 {
+    vertical-align: center;
+    color: #f9f9f9;
+}
+
+.readMore {
+    color: black;
+}
+
+.QuantityButton {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    margin: 5px;
+    vertical-align: center;
+    background: color($colors, primary);
+}
+
+.forceRight {
+    text-align: center;
+}
+
+.backgroundColor {
+    background: color($colors, background);
+}
+
+.icon {
+    color: white;
+}
+
 }

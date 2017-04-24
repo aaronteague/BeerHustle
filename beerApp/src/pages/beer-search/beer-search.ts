@@ -80,8 +80,11 @@ export class BeerSearchPage {
   }
 
   ionViewDidLoad() {
-    this.dataService.getBeerListing(beerList => {this.fullList = beerList; this.buildBeerSelection(); });
+    this.dataService.getBeerListing(beerList => {
+      this.fullList = beerList;
+       this.buildBeerSelection();
 
+       });
 
   }
 

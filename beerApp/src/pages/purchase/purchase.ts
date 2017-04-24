@@ -44,4 +44,22 @@ export class PurchasePage {
     
   }
 
+  payWithGoogle(){
+    this.navCtrl.push('PaymentPlaceholder', {
+      dataService: this.dataService,
+      paymentType: 'Google',
+      product: this.product,
+      quantity: this.quantity
+    });
+  }
+
+  payWithPaypal(){
+    this.navCtrl.push('PaymentPlaceholder', {
+      dataService: this.dataService,
+      paymentType: 'Paypal',
+      product: this.product,
+      quantity: this.quantity
+    });
+  }
+
 }
