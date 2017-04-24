@@ -33,4 +33,4 @@ The application is built with a strong backend of Google's Firebase, from Authen
 
 
 ## Here's a preview of what I have so far: ##
-![alt tag](https://github.com/aaronteague/BeerHustle/blob/master/Additional%20Files/BeerAppProgress.png)
+![alt tag](https://github.com/aaronteague/BeerHustle/blob/master/Additional%20Files/BeerHustleGif.gif)
