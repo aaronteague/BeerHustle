@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { DataService } from '../../providers/data-service';
+import { BeerSearchPage } from '../../pages/beer-search/beer-search';
 
 /**
  * Generated class for the PaymentPlaceholder component.
@@ -35,9 +36,10 @@ export class PaymentPlaceholder {
     // submitOrder(itemName: string, quantity: number, total: number, paymentType: string){
       this.dataService.submitOrder(this.product.title, this.quantity, this.product.price, this.paymentType).then(() => {
         this.DisplayStatus("Success!  Your beer will be out shortly!")
-        this.navCtrl.pop();
-        this.navCtrl.pop();
-
+         this.navCtrl.pop();
+         this.navCtrl.pop();
+        //this.navCtrl.setRoot(BeerSearchPage);
+        //this.navCtrl.popToRoot();
       }, error => {
         this.DisplayStatus(error.message);
       });

@@ -62,7 +62,7 @@ export class ProductPage {
     if(this.purchaseMultiplier > 1)
       this.purchaseMultiplier--;
 
-    this.navCtrl.pop();
+    
   }
 
   orderItem() {
