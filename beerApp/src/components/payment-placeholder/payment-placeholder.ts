@@ -37,7 +37,7 @@ export class PaymentPlaceholder {
         this.DisplayStatus("Success!  Your beer will be out shortly!")
         this.navCtrl.pop();
         this.navCtrl.pop();
-        // this.navCtrl.pop();
+
       }, error => {
         this.DisplayStatus(error.message);
       });

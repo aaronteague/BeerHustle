@@ -61,6 +61,8 @@ export class ProductPage {
   subtractOneQuantity() {
     if(this.purchaseMultiplier > 1)
       this.purchaseMultiplier--;
+
+    this.navCtrl.pop();
   }
 
   orderItem() {
