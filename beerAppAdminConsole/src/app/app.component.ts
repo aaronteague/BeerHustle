@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import * as firebase from 'firebase';
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
+//import {AngularFire, FirebaseListObservable} from 'angularfire2';
 
 
 
@@ -25,14 +25,14 @@ export class AppComponent {
   errorMsg: string = "";
   imgForm: ImageBundle;
   
-  items: FirebaseListObservable<any[]>;
-  af: AngularFire;
+ // items: FirebaseListObservable<any[]>;
+ // af: AngularFire;
 
-  constructor(af: AngularFire){
-    this.imgForm = new ImageBundle();
-    this.af = af;
+  constructor(){
+   // this.imgForm = new ImageBundle();
+   // this.af = af;
 
-    this.items = af.database.list('/BeerList');
+   // this.items = af.database.list('/BeerList');
 
   }
 

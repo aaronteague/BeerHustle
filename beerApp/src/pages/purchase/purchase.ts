@@ -40,8 +40,12 @@ export class PurchasePage {
   }
 
   makePurchase(type: string){
-    this.dataService.submitOrder(this.product.title, this.quantity, this.price, 'Cash');
-    
+    this.dataService.submitOrder(this.product.title, this.quantity, this.price, 'Cash').then(() => {
+      this.navCtrl.pop();
+      //this.navCtrl.pop().then(() => this.navCtrl.pop());
+      
+    });
+    //this.navCtrl.popToRoot();
   }
 
   payWithGoogle(){

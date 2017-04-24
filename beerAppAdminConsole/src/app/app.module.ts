@@ -5,9 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
-import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+//import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
-import * as keys from '../../../keys';
+//import * as keys from '../../../keys';
 
 
 @NgModule({
@@ -18,7 +18,7 @@ import * as keys from '../../../keys';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(keys.firebaseConfig)
+    //AngularFireModule.initializeApp(keys.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

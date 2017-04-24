@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, Content } from 'ionic-angular';
+import { NavController, NavParams, Content } from 'ionic-angular';
 
 import {trigger,state,style,animate,transition} from '@angular/animations';
 
@@ -73,7 +73,7 @@ export class BeerSearchPage {
 
   
 
-  constructor(public modalCtrl: ModalController, public dataService: DataService, public navCtrl: NavController, public navParams: NavParams) 
+  constructor( public dataService: DataService, public navCtrl: NavController, public navParams: NavParams) 
   {
     // this.dropList = new Queue();
     // this.dropList2 = [];
