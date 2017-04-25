@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import * as firebase from 'firebase';
+import { DataService } from './Providers/data-service';
 //import {AngularFire, FirebaseListObservable} from 'angularfire2';
 
 
@@ -22,13 +23,14 @@ class ImageBundle{
 export class AppComponent {
 
 
+
   errorMsg: string = "";
   imgForm: ImageBundle;
   
  // items: FirebaseListObservable<any[]>;
  // af: AngularFire;
 
-  constructor(){
+  constructor(public dataService: DataService){
    // this.imgForm = new ImageBundle();
    // this.af = af;
 

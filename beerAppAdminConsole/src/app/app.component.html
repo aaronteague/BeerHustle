@@ -1,43 +1,22 @@
-<body>
-  <div class="fix-div">
-    <p *ngIf="errorMsg">{{errorMsg}} </p>
-     <form id="contact" action="" method="post">
-    <h3>Add Image, title, and description here.</h3>
-    
-    <fieldset>
-      <input name="title" placeholder="Title" type="text" tabindex="1" required autofocus [(ngModel)]="imgForm.title">
-    </fieldset>
-    <fieldset>
-      <textarea name="description" placeholder="Add description of the image here." tabindex="2" required [(ngModel)]="imgForm.description"></textarea>
-    </fieldset>
-    <fieldset>
-      <input type="file" (change)="previewImage($event)" id="selectedFile" required/>
-    </fieldset>
-    <fieldset>
-      <input type="radio" [(ngModel)]="imgForm.catagory" name="catagory" value="Local" checked>Local
-      <input type="radio" [(ngModel)]="imgForm.catagory" name="catagory" value="Import">Import
-    </fieldset>
-    <fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending" (click)="sendImageData()">Submit</button>
-    </fieldset>
+<!DOCTYPE html>
+<html>
 
-  </form>
-  </div>
-  <div id="wrapper">
-    <ul>
-      <li *ngFor="let item of items | async" id="listItem">
-        <div class="crud-icons">
-          <button>Edit</button>
-          <br>
-          <button (click)="deleteItem(item.title, item.fileName)">X</button>
-        </div>
-        <div>
-        <p><img src={{item.filePath}} id="thumbnail" /> 
-        <b>{{item.title}}</b><b>{{item.catagory}}</b>
-        <br>
-        {{item.description}}</p>
-        </div>    
-      </li>
-    </ul>
-  </div>
-</body>
+<header>
+  <h1> Beer Hustle Admin Console</h1>
+</header>
+
+<nav>
+  <ul>
+    <li>Orders</li>
+    <li>Audit</li>
+    <li>Design</li>
+  </ul>
+</nav>
+<section>
+  <p> this will be the main section
+</section>
+<aside>
+  <p> We will put an iFrame here</p>
+</aside>
+
+</html>
