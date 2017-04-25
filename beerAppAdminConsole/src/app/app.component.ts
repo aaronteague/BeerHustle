@@ -22,7 +22,7 @@ class ImageBundle{
 })
 export class AppComponent {
 
-
+  currentTab: string = "Design";
 
   errorMsg: string = "";
   imgForm: ImageBundle;

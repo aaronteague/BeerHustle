@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+
 
 <header>
   <h1> Beer Hustle Admin Console</h1>
@@ -7,16 +6,12 @@
 
 <nav>
   <ul>
-    <li>Orders</li>
-    <li>Audit</li>
-    <li>Design</li>
+    <li><a>Orders</a></li>
+    <li><a>Audit</a></li>
+    <li><a>Design</a></li>
   </ul>
 </nav>
-<section>
-  <p> this will be the main section
-</section>
-<aside>
-  <p> We will put an iFrame here</p>
-</aside>
 
-</html>
+<app-order *ngIf="currentTab=='Order'"></app-order>
+<app-audit *ngIf="currentTab=='Audit'"></app-audit>
+<app-design *ngIf="currentTab=='Design'"></app-design>
