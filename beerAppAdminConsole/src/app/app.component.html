@@ -12,10 +12,14 @@
   </ul>
 </nav>
 
+
+<section *ngIf="currentTab=='Design'" class="Design">
+
+<div class="Edit">
+  <i class="fa fa-save fa-5x"></i>
+</div>
+
 <iframe src="http://localhost:8100/" width="360" height="640"></iframe>
 
-<app-design></app-design>
-<p> fucking test </p>
-<!--<app-order *ngIf="currentTab=='Order'"></app-order>
-<app-audit *ngIf="currentTab=='Audit'"></app-audit>
-<app-design *ngIf="currentTab=='Design'"></app-design>-->
+</section>
+

@@ -5,9 +5,9 @@ import { HttpModule } from '@angular/http';
 import { DataService } from './Providers/data-service';
 
 
-import { DesignComponent } from './design/design.component';
-import { OrderComponent } from './order/order.component';
-import { AuditComponent } from './audit/audit.component';
+// import { DesignComponent } from './design/design.component';
+// import { OrderComponent } from './order/order.component';
+// import { AuditComponent } from './audit/audit.component';
 import { AppComponent } from './app.component';
 
 //import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
@@ -18,9 +18,9 @@ import { AppComponent } from './app.component';
 @NgModule({
   declarations: [
     
-    DesignComponent,
-    OrderComponent,
-    AuditComponent,
+    // DesignComponent,
+    // OrderComponent,
+    // AuditComponent,
     AppComponent
   ],
   imports: [
