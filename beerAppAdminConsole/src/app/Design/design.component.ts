@@ -10,6 +10,8 @@ export class DesignComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    let someData = "banana chips";
+    console.log("fuck this mayn");
   }
 
 }

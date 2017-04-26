@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { DataService } from './Providers/data-service';
 
-import { AppComponent } from './app.component';
+
 import { DesignComponent } from './design/design.component';
 import { OrderComponent } from './order/order.component';
 import { AuditComponent } from './audit/audit.component';
+import { AppComponent } from './app.component';
 
 //import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
@@ -16,10 +17,11 @@ import { AuditComponent } from './audit/audit.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    
     DesignComponent,
     OrderComponent,
-    AuditComponent
+    AuditComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

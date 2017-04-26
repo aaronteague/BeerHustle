@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
 import { DataService } from './Providers/data-service';
+// import { DesignComponent } from './Design/design.component';
 //import {AngularFire, FirebaseListObservable} from 'angularfire2';
 
 
@@ -22,7 +23,8 @@ class ImageBundle{
 })
 export class AppComponent {
 
-  currentTab: string = "Design";
+  // currentTab: string = "Design";
+  // componentData: Component;
 
   errorMsg: string = "";
   imgForm: ImageBundle;
@@ -31,6 +33,7 @@ export class AppComponent {
  // af: AngularFire;
 
   constructor(public dataService: DataService){
+    // this.componentData = new DesignComponent();
    // this.imgForm = new ImageBundle();
    // this.af = af;
 
