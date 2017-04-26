@@ -84,6 +84,12 @@ export class DataService {
 
   }
 
+  sendToEdit(product: any){
+    console.log(product);
+    let productData = firebase.database().ref('/Edit');
+    productData.set(product);
+  }
+
    getUserAdditionalData(): firebase.Promise<any> {
      return firebase.database().ref('/Users/' + firebase.auth().currentUser.uid).once('value');
    }

@@ -122,12 +122,17 @@ export class BeerSearchPage {
     
   }
 
-  openProduct(product: any){
-    //console.log(product);
-    this.navCtrl.push(ProductPage, {
-      'product': product
-    });
+  productClicked(e: any, product: any){
+
+    if(!e.ctrlKey)
+      this.navCtrl.push(ProductPage, {
+        'product': product
+      });
+    else
+      this.dataService.sendToEdit(product);
   }
+
+
 
   move(amount: number): string {
     return amount + "px"

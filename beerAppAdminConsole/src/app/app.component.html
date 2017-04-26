@@ -15,8 +15,23 @@
 
 <section *ngIf="currentTab=='Design'" class="Design">
 
-<div class="Edit">
-  <i class="fa fa-save fa-5x"></i>
+<div class="Edit" *ngIf="product">
+  <!--<i class="fa fa-save fa-3x"></i>
+  <i class="fa fa-plus fa-3x"></i>-->
+
+ <fieldset>
+      <input name="title" placeholder="Title" type="text" tabindex="1" required autofocus [(ngModel)]="imgForm.title">
+    </fieldset>
+    <fieldset>
+      <textarea name="description" placeholder="Add description of the image here." tabindex="2" required [(ngModel)]="imgForm.description"></textarea>
+    </fieldset>
+    <fieldset>
+      <input type="file" (change)="previewImage($event)" id="selectedFile" required/>
+    </fieldset>
+    <fieldset>
+      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending" (click)="sendImageData()">Submit</button>
+    </fieldset>
+    <img [src]="imgForm.filePath" height="100" width="100">
 </div>
 
 <iframe src="http://localhost:8100/" width="360" height="640"></iframe>

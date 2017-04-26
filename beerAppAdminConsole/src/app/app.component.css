@@ -26,6 +26,10 @@ li a {
 
 }
 
+i {
+    background-color: white;
+}
+
 .Design .Edit {
     width: 300px;
     height: 300px;

@@ -9,4 +9,9 @@ export class DataService {
         console.log("initializing firebase"); 
         firebase.initializeApp(keys.firebaseConfig);
     }
+
+    getEditItem(): firebase.Promise<any> {
+        let editElement = firebase.database().ref('/Edit');
+        return editElement.once('value');
+    }
 }
