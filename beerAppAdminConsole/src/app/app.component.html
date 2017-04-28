@@ -20,10 +20,10 @@
   <i class="fa fa-plus fa-3x"></i>-->
 
  <fieldset>
-      <input name="title" placeholder="Title" type="text" tabindex="1" required autofocus [(ngModel)]="imgForm.title">
+      <input name="title" placeholder="Title" type="text" tabindex="1" required autofocus [(ngModel)]="product.title">
     </fieldset>
     <fieldset>
-      <textarea name="description" placeholder="Add description of the image here." tabindex="2" required [(ngModel)]="imgForm.description"></textarea>
+      <textarea name="description" placeholder="Add description of the image here." tabindex="2" required [(ngModel)]="product.description"></textarea>
     </fieldset>
     <fieldset>
       <input type="file" (change)="previewImage($event)" id="selectedFile" required/>
@@ -31,7 +31,7 @@
     <fieldset>
       <button name="submit" type="submit" id="contact-submit" data-submit="...Sending" (click)="sendImageData()">Submit</button>
     </fieldset>
-    <img [src]="imgForm.filePath" height="100" width="100">
+    <img [src]="product.filePath" height="100" width="100">
 </div>
 
 <iframe src="http://localhost:8100/" width="360" height="640"></iframe>

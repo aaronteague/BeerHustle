@@ -38,9 +38,11 @@ export class AppComponent {
    // this.af = af;
 
    console.log("doing stuff");
-  //  this.dataService.getEditItem().then(snapshot => {
-  //    this.product = snapshot.val();
-  //  }.catch(() => {console.log});
+   this.dataService.getEditItem().then(snapshot => {
+      console.log(snapshot.val());
+      this.product = snapshot.val();
+  });
+    //}.catch(() => {console.log});
   }
 
 //   addToStorage() : firebase.storage.UploadTask {
