@@ -28,6 +28,21 @@ export class AppComponent {
 
   errorMsg: string = "";
   product: any;
+
+  // readonly DEFAULT_PRODUCT_TEMPLATE = {
+  //   title: "",
+  //   description: "",
+  //   fileName: "",
+  //   filePath: "",
+  //   design: {
+  //     imgOffsetX: 0,
+  //     imgOffsetY: 0,
+  //     textColor: "#fff"
+  //   },
+  //   price: 0,
+  //   index: -1,
+  //   special: ""
+  // }
   
  // items: FirebaseListObservable<any[]>;
  // af: AngularFire;
@@ -36,10 +51,11 @@ export class AppComponent {
     // this.componentData = new DesignComponent();
    // this.imgForm = new ImageBundle();
    // this.af = af;
+   
 
    console.log("doing stuff");
    this.dataService.getEditItem().then(snapshot => {
-      console.log(snapshot.val());
+      //console.log(snapshot.val());
       this.product = snapshot.val();
   });
     //}.catch(() => {console.log});
