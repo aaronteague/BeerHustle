@@ -30,23 +30,23 @@
         <textarea name="description" placeholder="Add description of the image here." tabindex="2" required [(ngModel)]="product.description"></textarea>
       </fieldset>
       <fieldset>
-        <input type="file" (change)="previewImage($event)" id="selectedFile" tabindex="3" required/>
+        <input type="file" id="imgInp" (change)="previewImage($event)" id="selectedFile" tabindex="3" required/>
       </fieldset>
        <fieldset>
         <input name="fontColor" type="color" tabindex="4" required/>
       </fieldset>
-       <!--<fieldset>
+       <fieldset>
         <input name="Special" placeholder="Special Text" type="text" tabindex="5" required  [(ngModel)]="product.title">
       </fieldset>
       <fieldset>
-        <input name="Price" placeholder="price" type="text" tabindex="6" required >
-      </fieldset>-->
+        <input name="Price" placeholder="price" type="number" tabindex="6" required >
+      </fieldset>
 
       
     </div>
 
     <div class="ImgPosition">
-      <img [src]="product.filePath" height="130px" width="180">
+      <img [src]="product.filePath" (mousedown)="mouseDown($event)" (mouseup)="loseFocus()" (mouseout)="loseFocus()" (mousemove)="mouseMove($event)" height="130px" width="180">
     </div>
 
   </div>

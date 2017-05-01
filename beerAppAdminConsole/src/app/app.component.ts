@@ -28,30 +28,36 @@ export class AppComponent {
 
   errorMsg: string = "";
   product: any;
+  imgHeld: boolean = false;
+  lastPos = {
+    x: 0,
+    y: 0
+  }
 
-  // readonly DEFAULT_PRODUCT_TEMPLATE = {
-  //   title: "",
-  //   description: "",
-  //   fileName: "",
-  //   filePath: "",
-  //   design: {
-  //     imgOffsetX: 0,
-  //     imgOffsetY: 0,
-  //     textColor: "#fff"
-  //   },
-  //   price: 0,
-  //   index: -1,
-  //   special: ""
-  // }
+
   
  // items: FirebaseListObservable<any[]>;
  // af: AngularFire;
 
   constructor(public dataService: DataService){
+    var productTemplate: = {
+    title: "",
+     description: "",
+     fileName: "",
+     filePath: "",
+     design: {
+       imgOffsetX: 0,
+       imgOffsetY: 0,
+       textColor: "#fff"
+     },
+     price: 0,
+     index: -1,
+     special: ""
+    };
     // this.componentData = new DesignComponent();
    // this.imgForm = new ImageBundle();
    // this.af = af;
-   
+   this.product = productTemplate;
 
    console.log("doing stuff");
    this.dataService.getEditItem().then(snapshot => {
@@ -92,6 +98,37 @@ export class AppComponent {
 
 
 //   }
+
+previewImage(fileInput: any) {
+  this.product.fileName = fileInput.target.files[0].name;
+  this.dataService.imgNameToPath(fileInput, (url) => {this.product.filePath = url});
+}
+
+mouseDown(e: any) {
+  console.log(e);
+  this.imgHeld = true;
+  this.lastPos = {
+    x: e.x,
+    y: e.y
+  };
+}
+
+loseFocus() {
+  console.log("mouse up");
+  this.imgHeld = false;
+}
+
+mouseMove(e: any){
+  if(!this.imgHeld)
+    return;
+  console.log("mouse move");
+  let posDifference = {
+    x: this.lastPos.x - e.x,
+    y: this.lastPos.y - e.y
+  };
+  this.product.design.imgOffsetX += posDifference.x;
+  this.product.design.imgOffsetY += posDifference.y;
+}
 
 //   previewImage(fileInput: any){
 //     if(fileInput.target.files && fileInput.target.files[0]){

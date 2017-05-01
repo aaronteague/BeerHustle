@@ -14,4 +14,19 @@ export class DataService {
         let editElement = firebase.database().ref('/Edit');
         return editElement.once('value');
     }
+
+    imgNameToPath(fileInput: any, pathCallback: function){
+    if(fileInput.target.files && fileInput.target.files[0]){
+        //console.log(fileInput.target);
+      let file = fileInput.target.files[0];
+      var reader = new FileReader();
+      reader.onload = (e) => {
+       // console.log(e.target);
+        pathCallback(e.target.result);
+        
+      }
+      }
+
+      reader.readAsDataURL(file);
+    }
 }
