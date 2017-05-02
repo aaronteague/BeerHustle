@@ -33,20 +33,24 @@
         <input type="file" id="imgInp" (change)="previewImage($event)" id="selectedFile" tabindex="3" required/>
       </fieldset>
        <fieldset>
-        <input name="fontColor" type="color" tabindex="4" required/>
+        <input name="fontColor" type="color" tabindex="4" [(ngModel)]="product.design.textColor"required/>
       </fieldset>
        <fieldset>
-        <input name="Special" placeholder="Special Text" type="text" tabindex="5" required  [(ngModel)]="product.title">
+        <input name="Special" placeholder="Special Text" type="text" tabindex="5" required  [(ngModel)]="product.special">
       </fieldset>
       <fieldset>
-        <input name="Price" placeholder="price" type="number" tabindex="6" required >
+        <input name="Price" placeholder="price" type="number" tabindex="6" [(ngModel)]="product.price" required >
       </fieldset>
 
       
     </div>
 
     <div class="ImgPosition">
-      <img [src]="product.filePath" (mousedown)="mouseDown($event)" (mouseup)="loseFocus()" (mouseout)="loseFocus()" (mousemove)="mouseMove($event)" height="130px" width="180">
+      
+      <img [src]="product.filePath" (mousedown)="mouseDown($event)" (mouseup)="loseFocus()" (mouseout)="loseFocus()" (mousemove)="mouseMove($event)" 
+      (dragstart)="derp()" [ngStyle]="{'bottom': move(product.design.imgOffsetY), 'left': move(product.design.imgOffsetX)}">
+      <p [ngStyle]="{'color': product.design.textColor}">{{product.title}}</p>
+      <!--<p>{{product.special}}</p>-->
     </div>
 
   </div>

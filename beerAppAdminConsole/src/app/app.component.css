@@ -54,8 +54,32 @@ fieldset {
 }
 
 .Design .ImgPosition {
+    position: relative;
     float:right;
     margin: 5px;
+    height:130px;
+    width:180px;
+    overflow:hidden;
+    border: 1px solid black;
+}
+
+.ImgPosition img {
+    position: absolute;
+    
+    width:180px;
+    /*overflow: hidden;*/
+}
+
+.ImgPosition p {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    text-align: left;
+    font-size: 1.0em;
+    width: 100%;
+    font-weight: bold;
+    
+    pointer-events: none;
 }
 
 .Design iframe {

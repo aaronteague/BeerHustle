@@ -105,7 +105,7 @@ previewImage(fileInput: any) {
 }
 
 mouseDown(e: any) {
-  console.log(e);
+ // console.log(e);
   this.imgHeld = true;
   this.lastPos = {
     x: e.x,
@@ -113,22 +113,32 @@ mouseDown(e: any) {
   };
 }
 
+derp(){
+  return false;
+}
+
 loseFocus() {
-  console.log("mouse up");
+  //console.log("mouse up");
   this.imgHeld = false;
+  this.lastPos.y = 0;
 }
 
 mouseMove(e: any){
   if(!this.imgHeld)
     return;
-  console.log("mouse move");
+  //console.log("mouse move");
   let posDifference = {
     x: this.lastPos.x - e.x,
     y: this.lastPos.y - e.y
   };
-  this.product.design.imgOffsetX += posDifference.x;
-  this.product.design.imgOffsetY += posDifference.y;
+  //this.product.design.imgOffsetX = posDifference.x;
+  this.product.design.imgOffsetY = posDifference.y;
+  
 }
+
+move(amount: number): string {
+    return amount + "px"
+  }
 
 //   previewImage(fileInput: any){
 //     if(fileInput.target.files && fileInput.target.files[0]){
