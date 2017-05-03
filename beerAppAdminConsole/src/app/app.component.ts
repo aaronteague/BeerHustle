@@ -36,11 +36,8 @@ export class AppComponent {
 
 
   
- // items: FirebaseListObservable<any[]>;
- // af: AngularFire;
-
-  constructor(public dataService: DataService){
-    var productTemplate: = {
+  getDefaultProduct(): any {
+    return {
     title: "",
      description: "",
      fileName: "",
@@ -54,15 +51,16 @@ export class AppComponent {
      index: -1,
      special: ""
     };
-    // this.componentData = new DesignComponent();
-   // this.imgForm = new ImageBundle();
-   // this.af = af;
-   this.product = productTemplate;
+  }
+
+  constructor(public dataService: DataService){
+  
+   this.product = this.getDefaultProduct();
 
    console.log("doing stuff");
    this.dataService.getEditItem().then(snapshot => {
-      //console.log(snapshot.val());
-      this.product = snapshot.val();
+      if(snapshot.val())
+        this.product = snapshot.val();
   });
     //}.catch(() => {console.log});
   }
@@ -115,6 +113,21 @@ mouseDown(e: any) {
 
 derp(){
   return false;
+}
+
+save(){
+  this.dataService.upload(this.product);
+}
+
+remove(){
+  
+  this.dataService.remove(this.product);
+  this.product = this.getDefaultProduct();
+}
+
+createNew(){
+  this.product = this.getDefaultProduct();
+  this.dataService.removeEdit();
 }
 
 loseFocus() {
