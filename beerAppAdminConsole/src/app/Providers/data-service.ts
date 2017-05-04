@@ -45,6 +45,7 @@ export class DataService {
         });
     }
 
+
     remove(product: any){
         // delete from storage
          firebase.storage().ref().child(product.title + "/" + product.fileName).delete();
@@ -57,5 +58,20 @@ export class DataService {
         // })
         // delete from the edit table
          firebase.database().ref('Edit').remove();
+    }
+
+    receiveOrders(onAdd: any, onChange: any, onRemove: any){
+        let orderList = firebase.database().ref('Orders');
+        orderList.on('child_added', (data) => onAdd(data.key, data.val()));
+        orderList.on('child_changed', (data) => onChange(data.key, data.val()));
+        orderList.on('child_removed', (data) => onRemove(data.key, data.val()));
+    }
+
+    receiveSales(onAdd: any, onChange: any, onRemove: any, dateStart: any, dateEnd: any){
+        //console.log("WTF");
+        let orderList = firebase.database().ref('Sales');
+        orderList.on('child_added', (data) => onAdd(data.key, data.val()));
+        orderList.on('child_changed', (data) => onChange(data.key, data.val()));
+        orderList.on('child_removed', (data) => onRemove(data.key, data.val()));
     }
 }

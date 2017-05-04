@@ -26,6 +26,19 @@ li a {
 
 }
 
+.OrderItem {
+    /*display: block;*/
+    display: table;
+    background-color: skyblue;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.OrderItem p {
+
+}
+
 i {
     background-color: lightblue;
     margin: 0px;

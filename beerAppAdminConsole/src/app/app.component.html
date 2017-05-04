@@ -4,13 +4,14 @@
 
 <nav>
   <ul>
-    <li><a>Orders</a></li>
-    <li><a>Audit</a></li>
-    <li><a>Design</a></li>
+    <li><a (click)="changeSection('Orders')">Orders</a></li>
+    <li><a (click)="changeSection('Audit')">Audit</a></li>
+    <li><a (click)="changeSection('Design')">Design</a></li>
   </ul>
 </nav>
 
 
+<!--The section for the Design Aspect of the admin console-->
 <section *ngIf="currentTab=='Design'" class="Design">
 
   <!--<div class="Edit" *ngIf="product">-->
@@ -57,4 +58,28 @@
 
   <iframe src="http://localhost:8100/" width="360" height="640"></iframe>
 
+</section>
+
+<!--Section of the admin console for receiving orders-->
+<section *ngIf="currentTab=='Orders'" class="Orders">
+  <h3>Unfulfilled Orders </h3>
+  <div *ngFor="let order of orderList" class="OrderItem">
+    {{order.itemName}}
+  </div>
+
+</section>
+
+
+<!--Section for auditing transactions-->
+<section *ngIf="currentTab=='Audit'" class="Audit">
+  <h3> Sales Review </h3>
+
+  <p> Start Time </p>
+  <input type="datetime-local" value="2014-11-16T15:25:33">
+  <p> End Time </p>
+  <input type="datetime-local" value="2014-11-16T15:25:33">
+
+  <div *ngFor="let sale of salesList" class="OrderItem">
+    {{sale.itemName}}
+  </div>
 </section>

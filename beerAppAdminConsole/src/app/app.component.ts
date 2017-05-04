@@ -23,7 +23,7 @@ import 'rxjs/add/operator/map'
 })
 export class AppComponent {
 
-  currentTab: string = "Design";
+  currentTab: string = "Audit";
   // componentData: Component;
 
   errorMsg: string = "";
@@ -33,6 +33,9 @@ export class AppComponent {
     x: 0,
     y: 0
   }
+
+  orderList: any[] = [];
+  salesList: any[] = [];
 
 
   
@@ -62,7 +65,31 @@ export class AppComponent {
       if(snapshot.val())
         this.product = snapshot.val();
   });
-    //}.catch(() => {console.log});
+    
+    // let's get that list of orders   
+    this.dataService.receiveOrders(
+      // on add
+      (key, data) => { this.orderList.push(data);},
+      // on change
+      (key, data) => { },
+      // on remove
+      (key, data) => { }
+    );
+
+    // let's get the list of sales for audit
+    this.dataService.receiveSales(
+      // on add
+      (key, data) => { this.salesList.push(data)},
+      // on change
+      (key, data) => { },
+      // on remove
+      (key, data) => { },
+      // start date
+      "dateTimeGoesHere",
+      // end date
+      "dateTimeGoesHere"
+    );
+
   }
 
 //   addToStorage() : firebase.storage.UploadTask {
@@ -100,6 +127,10 @@ export class AppComponent {
 previewImage(fileInput: any) {
   this.product.fileName = fileInput.target.files[0].name;
   this.dataService.imgNameToPath(fileInput, (url) => {this.product.filePath = url});
+}
+
+changeSection(section: string){
+  this.currentTab = section;
 }
 
 mouseDown(e: any) {
