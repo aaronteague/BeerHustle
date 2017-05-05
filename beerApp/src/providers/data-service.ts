@@ -22,7 +22,7 @@ import * as keys from '../../../keys';
 @Injectable()
 export class DataService {
 
-
+  
 
    defaultUserInfo = {
      points: 0
@@ -50,6 +50,9 @@ export class DataService {
   constructor() {  
     console.log("initializing firebase"); 
     firebase.initializeApp(keys.firebaseConfig);
+
+    //test stuff
+    firebase.
   }
 
   submitOrder(itemName: string, quantity: number, total: number, paymentType: string): firebase.Promise<any>{

@@ -123,8 +123,9 @@ export class BeerSearchPage {
   }
 
   productClicked(e: any, product: any){
+    console.log(e);
 
-    if(!e.ctrlKey)
+    if(!e.ctrlKey && !e.metaKey)
       this.navCtrl.push(ProductPage, {
         'product': product
       });

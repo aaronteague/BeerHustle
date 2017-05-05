@@ -8,6 +8,8 @@ export class DataService {
     constructor() {
         console.log("initializing firebase"); 
         firebase.initializeApp(keys.firebaseConfig);
+
+        
     }
 
     getEditItem(): firebase.Promise<any> {
