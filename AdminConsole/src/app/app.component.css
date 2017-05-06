@@ -27,7 +27,6 @@ li a {
 }
 
 .OrderItem {
-    /*display: block;*/
     display: table;
     background-color: skyblue;
     border-radius: 10px;
@@ -46,13 +45,9 @@ i {
 }
 
 .Design .Edit {
-    /*width: 300px;*/
-    /*height: 300px;*/
     background-color: lightblue;
     float : left;
-    /*margin: 20px;*/
     border-radius: 0 0 15px 0;
-    /*padding: 15px;*/
 }
 
 fieldset {
@@ -80,7 +75,6 @@ fieldset {
     position: absolute;
     
     width:180px;
-    /*overflow: hidden;*/
 }
 
 .ImgPosition p {
@@ -93,6 +87,7 @@ fieldset {
     font-weight: bold;
     
     pointer-events: none;
+    
 }
 
 .Design iframe {

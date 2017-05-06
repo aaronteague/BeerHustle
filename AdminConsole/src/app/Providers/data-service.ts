@@ -17,19 +17,20 @@ export class DataService {
         return editElement.once('value');
     }
 
-    imgNameToPath(fileInput: any, pathCallback: function){
+    imgNameToPath(fileInput: any, pathCallback: any){
     if(fileInput.target.files && fileInput.target.files[0]){
         //console.log(fileInput.target);
-      let file = fileInput.target.files[0];
+      let file: Blob = fileInput.target.files[0] as Blob;
+      
       var reader = new FileReader();
       reader.onload = (e) => {
-       // console.log(e.target);
-        pathCallback(e.target.result);
         
-      }
+        let target = e.target as any;
+        pathCallback(target.result);
       }
 
       reader.readAsDataURL(file);
+      }  
     }
 
     removeEdit(){
@@ -43,7 +44,7 @@ export class DataService {
         imgRef.putString(product.filePath, 'data_url').then(snapshot => {
             //put into database
             product.filePath = snapshot.downloadURL;
-            firebase.database().ref('BeerList').child(product.title).set(product).then(snapshot => console.log(snapshot);
+            firebase.database().ref('BeerList').child(product.title).set(product).then(snapshot => console.log(snapshot));
         });
     }
 
@@ -53,11 +54,8 @@ export class DataService {
          firebase.storage().ref().child(product.title + "/" + product.fileName).delete();
 
         // delete from the main database
-        // firebase.database().ref('BeerList').child(product.title).once(value => {
-        //     if(value)
         firebase.database().ref('BeerList').child(product.title).remove();
 
-        // })
         // delete from the edit table
          firebase.database().ref('Edit').remove();
     }
@@ -70,7 +68,6 @@ export class DataService {
     }
 
     receiveSales(onAdd: any, onChange: any, onRemove: any, dateStart: any, dateEnd: any){
-        //console.log("WTF");
         let orderList = firebase.database().ref('Sales');
         orderList.on('child_added', (data) => onAdd(data.key, data.val()));
         orderList.on('child_changed', (data) => onChange(data.key, data.val()));

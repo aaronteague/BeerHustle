@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class BeerAppAdminConsolePage {
+export class AdminConsolePage {
   navigateTo() {
     return browser.get('/');
   }

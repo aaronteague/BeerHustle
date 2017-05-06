@@ -52,7 +52,7 @@ export class DataService {
     firebase.initializeApp(keys.firebaseConfig);
 
     //test stuff
-    firebase.
+    
   }
 
   submitOrder(itemName: string, quantity: number, total: number, paymentType: string): firebase.Promise<any>{

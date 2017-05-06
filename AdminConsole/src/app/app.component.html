@@ -14,7 +14,6 @@
 <!--The section for the Design Aspect of the admin console-->
 <section *ngIf="currentTab=='Design'" class="Design">
 
-  <!--<div class="Edit" *ngIf="product">-->
   <div class="Edit">
 
     <div class="File">
@@ -51,7 +50,6 @@
       <img [src]="product.filePath" (mousedown)="mouseDown($event)" (mouseup)="loseFocus()" (mouseout)="loseFocus()" (mousemove)="mouseMove($event)" 
       (dragstart)="derp()" [ngStyle]="{'bottom': move(product.design.imgOffsetY), 'left': move(product.design.imgOffsetX)}">
       <p [ngStyle]="{'color': product.design.textColor}">{{product.title}}</p>
-      <!--<p>{{product.special}}</p>-->
     </div>
 
   </div>
