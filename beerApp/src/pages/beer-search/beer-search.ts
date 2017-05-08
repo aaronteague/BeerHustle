@@ -57,7 +57,7 @@ export class BeerSearchPage {
   dropList = new Collections.Queue();
   okToDrop: boolean = true;
   dropDelay: number = 50;
-  searchExpand: string = 'collapsed';
+  searchExpand: string = 'expanded';
 
   searchedList: any[];
   fullList: any[];
@@ -144,7 +144,7 @@ export class BeerSearchPage {
     let query = ev.target.value;
 
     if(query.length == 0)
-      this.searchedList = [];
+      this.searchedList = null;
     else
       this.searchedList = this.fullList.filter(this.containsSearchParams, query);
   }
