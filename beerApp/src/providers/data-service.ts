@@ -17,6 +17,9 @@ import * as keys from '../../../keys';
       paymentType: string = "cash";
       paymentStatus: string = "pending";
       delivered: boolean = false;
+      user: string = "some hex value";
+      name: string = "Jonn Smith"
+      date: string = "";
  }
 
 @Injectable()
@@ -61,12 +64,15 @@ export class DataService {
     order.quantity = quantity;
     order.total = total;
     order.paymentType = paymentType;
+    order.user = firebase.auth().currentUser.uid;
+    order.name = firebase.auth().currentUser.displayName;
 
     if(paymentType != "Cash")
       order.paymentStatus = "Complete";
 
     let date = new Date();
-    let orderEntry = firebase.database().ref('/Orders').child(date.toUTCString());
+    order.date = date.valueOf().toString();
+    let orderEntry = firebase.database().ref('/Orders').child(date.valueOf().toString());
 
 
     return orderEntry.set(order);

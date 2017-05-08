@@ -21,6 +21,10 @@ export class AppComponent {
     y: 0
   }
 
+  dateRange: any;
+  HtmlDateFrom: any;
+  HtmlDateTo: any;
+
   orderList: any[] = [];
   salesList: any[] = [];
 
@@ -47,6 +51,17 @@ export class AppComponent {
   
    this.product = this.getDefaultProduct();
 
+   let fromDate:Date = new Date();
+   fromDate.setHours(0);fromDate.setMinutes(0);fromDate.setSeconds(0);
+
+   let toDate:Date = new Date();
+   toDate.setHours(23); toDate.setMinutes(59);toDate.setSeconds(59);
+   
+   this.dateRange = {
+     start: fromDate,
+     end: toDate
+   }
+
    console.log("doing stuff");
    this.dataService.getEditItem().then(snapshot => {
       if(snapshot.val())
@@ -56,26 +71,19 @@ export class AppComponent {
     // let's get that list of orders   
     this.dataService.receiveOrders(
       // on add
-      (key, data) => { this.orderList.push(data);},
+      (data) => { this.orderList.push(data);},
       // on change
-      (key, data) => { },
+      (data) => { },
       // on remove
-      (key, data) => { }
+      (data) => {         
+        let index = this.orderList.findIndex((element, index, array) => {return element.key == data.key;});
+
+        if(index !== -1)
+          this.orderList.splice(index, 1);
+       }
     );
 
-    // let's get the list of sales for audit
-    this.dataService.receiveSales(
-      // on add
-      (key, data) => { this.salesList.push(data)},
-      // on change
-      (key, data) => { },
-      // on remove
-      (key, data) => { },
-      // start date
-      "dateTimeGoesHere",
-      // end date
-      "dateTimeGoesHere"
-    );
+    this.SearchSales();
 
   }
 
@@ -97,8 +105,40 @@ mouseDown(e: any) {
   };
 }
 
-derp(){
-  return false;
+changeDelivered(order: any){
+  //  if(order.val().delivered)
+    order.delivered = true;
+    this.dataService.setDelivered(order);
+}
+
+SearchSales(){
+      // let's get the list of sales for audit
+    this.salesList = [];
+    this.dataService.receiveSales(
+      // on add
+      (data) => { this.salesList.push(data)},
+      // on change
+      (data) => { },
+      // on remove
+      (key) => { },
+      // start date
+      this.dateRange.start.valueOf(),
+      // end date
+      this.dateRange.end.valueOf()
+    );
+}
+
+translateToDate(){
+  // start
+  if(this.HtmlDateFrom){
+    var startDate = new Date(this.HtmlDateFrom.replace(/-/g,'/').replace('T',' '));
+    this.dateRange.start = new Date(startDate);
+  }
+  //end
+  if(this.HtmlDateTo){
+    var endDate = new Date(this.HtmlDateTo.replace(/-/g,'/').replace('T',' '));
+    this.dateRange.end = new Date(endDate);
+  }
 }
 
 save(){

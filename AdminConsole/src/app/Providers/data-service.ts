@@ -33,6 +33,16 @@ export class DataService {
       }  
     }
 
+    setDelivered(order: any){
+        //console.log(order);
+
+        // get and remove order from the orders list
+        firebase.database().ref('Orders').child(order.key).remove();
+
+        // add to the Sales list
+        firebase.database().ref('Sales').child(order.key).set(order.val());
+    }
+
     removeEdit(){
         firebase.database().ref('Edit').remove();
     }
@@ -62,15 +72,32 @@ export class DataService {
 
     receiveOrders(onAdd: any, onChange: any, onRemove: any){
         let orderList = firebase.database().ref('Orders');
-        orderList.on('child_added', (data) => onAdd(data.key, data.val()));
-        orderList.on('child_changed', (data) => onChange(data.key, data.val()));
-        orderList.on('child_removed', (data) => onRemove(data.key, data.val()));
+        orderList.on('child_added', (data) => onAdd(data));
+        orderList.on('child_changed', (data) => onChange(data));
+        orderList.on('child_removed', (data) => onRemove(data));
     }
 
     receiveSales(onAdd: any, onChange: any, onRemove: any, dateStart: any, dateEnd: any){
+        // testing shit
+        console.log(dateStart);
+        console.log(dateEnd);
+        //console.log();
+        //console.log();
+
+
+
         let orderList = firebase.database().ref('Sales');
-        orderList.on('child_added', (data) => onAdd(data.key, data.val()));
-        orderList.on('child_changed', (data) => onChange(data.key, data.val()));
-        orderList.on('child_removed', (data) => onRemove(data.key, data.val()));
+        let query;
+        if(dateStart && dateEnd)
+            query = orderList.orderByKey().startAt(dateStart.toString()).endAt(dateEnd.toString());
+            //query = orderList.orderByKey().startAt("Banana").endAt("ddadsfadf");//.endAt(dateEnd.toString() + "~");
+
+        else
+            query = orderList.orderByKey();
+        // orderList.startAt(dateStart);
+        // orderList.endAt(dateEnd);
+        query.on('child_added', (data) => onAdd(data));
+        query.on('child_changed', (data) => onChange(data));
+        query.on('child_removed', (data) => onRemove(data));
     }
 }

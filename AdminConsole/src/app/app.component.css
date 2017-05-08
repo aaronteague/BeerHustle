@@ -26,6 +26,8 @@ li a {
 
 }
 
+
+
 .OrderItem {
     display: table;
     background-color: skyblue;
@@ -34,8 +36,18 @@ li a {
     padding: 5px;
 }
 
-.OrderItem p {
+.OrderItem .alignLeft {
+    width: 200px;
+    
+    overflow: hidden;
+}
 
+.OrderItem .alignRight
+{
+    width: 70px;
+    text-align: center;
+    overflow: hidden;
+    display:inline;
 }
 
 i {

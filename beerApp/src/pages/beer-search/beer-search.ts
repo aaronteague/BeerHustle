@@ -40,7 +40,7 @@ import { DataService } from '../../providers/data-service';
        transition('* => placed', animate('.5s ease-out'))
      ]),
      trigger('openClose', [
-       state('collapsed, void', style({width: '10px', opacity: 0})),
+       state('collapsed, void', style({width: '10px', opacity: 1})),
        state('expanded', style({width: '100%', opacity: 1})),
        transition('collapsed <=> expanded', animate('.5s'))
      ])

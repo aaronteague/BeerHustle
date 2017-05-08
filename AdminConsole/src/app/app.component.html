@@ -62,7 +62,21 @@
 <section *ngIf="currentTab=='Orders'" class="Orders">
   <h3>Unfulfilled Orders </h3>
   <div *ngFor="let order of orderList" class="OrderItem">
-    {{order.itemName}}
+    <!--<p>{{order.key}}</p>-->
+    <p><b>{{order.val().name}}</b></p>
+    <tr>
+      <td class='alignLeft'>{{order.val().itemName}}</td>
+      <td class='alignRight'>x{{order.val().quantity}}</td>
+    </tr>
+    <tr>
+      <td class='alignLeft'>PayType: {{order.val().paymentType}}</td>
+      <td class='alignRight'>Total: {{order.val().total | currency:'USD':true:'1.2-2'}}</td>
+    </tr>
+    <tr>
+      <td class='alignLeft'>Status: {{order.val().paymentStatus}}</td>
+      <td class='alignRight'>Delivered<input type="checkbox" [(ngModel)]="order.delivered" (change)="changeDelivered(order)"></td>
+    </tr>
+    
   </div>
 
 </section>
@@ -73,11 +87,25 @@
   <h3> Sales Review </h3>
 
   <p> Start Time </p>
-  <input type="datetime-local" value="2014-11-16T15:25:33">
+  <input type="datetime-local" [(ngModel)]="HtmlDateFrom" (change)="translateToDate()">
   <p> End Time </p>
-  <input type="datetime-local" value="2014-11-16T15:25:33">
+  <input type="datetime-local" [(ngModel)]="HtmlDateTo" (change)="translateToDate()">
+  <button (click)="SearchSales()">Filter</button>
 
   <div *ngFor="let sale of salesList" class="OrderItem">
-    {{sale.itemName}}
+    <p>{{sale.key | date:'medium'}}</p>
+    <!--<p><b>{{sale.val().name}}</b></p>-->
+    <tr>
+      <td class='alignLeft'>{{sale.val().itemName}}</td>
+      <td class='alignRight'>x{{sale.val().quantity}}</td>
+    </tr>
+    <tr>
+      <td class='alignLeft'>PayType: {{sale.val().paymentType}}</td>
+      <td class='alignRight'>Total: {{sale.val().total | currency:'USD':true:'1.2-2'}}</td>
+    </tr>
+    <tr>
+      <td class='alignLeft'>Status: {{sale.val().paymentStatus}}</td>
+      <td class='alignRight'>Delivered<input type="checkbox" [(ngModel)]="sale.delivered" (change)="changeDelivered(sale)"></td>
+    </tr>
   </div>
 </section>
