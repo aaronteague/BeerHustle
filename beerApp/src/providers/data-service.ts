@@ -136,23 +136,31 @@ export class DataService {
     });
   }
 
-  getBeerListing(onChangeFunction: any){
+  getBeerListing(addFunc: any, changeFunc: any, removeFunc: any){
 
-    let refreshBeerArray = (snapshot: any) => {
-            let beerArray: any[] = [];
-      snapshot.forEach(function(childSnapshot){
+    let fbQuery = firebase.database().ref('BeerList').orderByChild('index');
+    
+    fbQuery.on('child_added', (data) => addFunc(data.val()));
+    fbQuery.on('child_changed', (data) => changeFunc(data.val()));
+    fbQuery.on('child_removed', (data) => removeFunc(data.val()));
+
+
+
+    // let refreshBeerArray = (snapshot: any) => {
+    //         let beerArray: any[] = [];
+    //   snapshot.forEach(function(childSnapshot){
         
-        //this.addDesignDataIfNeeded(childSnapshot);
-        beerArray.push(childSnapshot.val());
-        return false;
-      });
+    //     //this.addDesignDataIfNeeded(childSnapshot);
+    //     beerArray.push(childSnapshot.val());
+    //     return false;
+    //   });
 
-      onChangeFunction(beerArray);
-    };
+    //   onChangeFunction(beerArray);
+    // };
 
-    let fbList = firebase.database().ref('BeerList').orderByChild('index');
+    // let fbList = firebase.database().ref('BeerList').orderByChild('index');
 
-    fbList.once('value', refreshBeerArray);
+    // fbList.once('value', refreshBeerArray);
   }
 
 

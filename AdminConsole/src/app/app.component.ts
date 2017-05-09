@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map'
 })
 export class AppComponent {
 
-  currentTab: string = "Audit";
+  currentTab: string = "Design";
 
   errorMsg: string = "";
   product: any;
@@ -61,12 +61,12 @@ export class AppComponent {
      start: fromDate,
      end: toDate
    }
-
-   console.log("doing stuff");
-   this.dataService.getEditItem().then(snapshot => {
-      if(snapshot.val())
-        this.product = snapshot.val();
-  });
+this.dataService.getEditItem((data) => { if(data)this.product = data; } );
+   //console.log("doing stuff");
+  //  this.dataService.getEditItem().then(snapshot => {
+  //     if(snapshot.val())
+  //       this.product = snapshot.val();
+ // });
     
     // let's get that list of orders   
     this.dataService.receiveOrders(

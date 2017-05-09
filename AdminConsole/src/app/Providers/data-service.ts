@@ -12,9 +12,10 @@ export class DataService {
         
     }
 
-    getEditItem(): firebase.Promise<any> {
-        let editElement = firebase.database().ref('/Edit');
-        return editElement.once('value');
+    getEditItem(changeFunc: any) {
+        firebase.database().ref('Edit').on('value', (data) => changeFunc(data.val()));
+        // let editElement = firebase.database().ref('/Edit');
+        // return editElement.on('child_changed');
     }
 
     imgNameToPath(fileInput: any, pathCallback: any){

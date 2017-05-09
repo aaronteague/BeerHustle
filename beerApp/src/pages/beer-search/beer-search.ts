@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, Content } from 'ionic-angular';
+import { NavController, NavParams, Content, LoadingController } from 'ionic-angular';
 
 import {trigger,state,style,animate,transition} from '@angular/animations';
 
@@ -73,18 +73,51 @@ export class BeerSearchPage {
 
   
 
-  constructor( public dataService: DataService, public navCtrl: NavController, public navParams: NavParams) 
+  constructor(public loadingCtrl: LoadingController, public dataService: DataService, public navCtrl: NavController, public navParams: NavParams) 
   {
     // this.dropList = new Queue();
     // this.dropList2 = [];
   }
 
   ionViewDidLoad() {
-    this.dataService.getBeerListing(beerList => {
-      this.fullList = beerList;
-       this.buildBeerSelection();
+    let loader = this.loadingCtrl.create({
+      content: "Retrieving items..."
+    });
+    loader.present();
 
-       });
+
+
+    this.dataService.getBeerListing(
+      // add func
+      (data) => { 
+        if(loader)
+          {loader.dismiss(); loader=null}; 
+        if(data.featured)
+          this.beerSelection.featured.push(data); 
+          else this.beerSelection.rest.push(data); 
+        },
+      // change func
+      (data) => { 
+        if(data.featured){
+          let index = this.beerSelection.featured.findIndex((value, index, obj) => value.title === data.title);
+          this.beerSelection.featured[index] = data;
+        }else{
+          let index = this.beerSelection.rest.findIndex((value, index, obj) => value.title === data.title);
+          this.beerSelection.rest[index] = data;
+        }
+       },
+      // remove func
+      (data) => {
+        if(data.featured){
+          let index = this.beerSelection.featured.findIndex((value, index, obj) => value.title === data.title);
+          this.beerSelection.featured.splice(index, 1);
+        }else{
+          let index = this.beerSelection.rest.findIndex((value, index, obj) => value.title === data.title);
+          this.beerSelection.rest.splice(index, 1)
+        }
+      }
+    ); 
+
 
   }
 
