@@ -42,7 +42,7 @@ export class MyApp {
     // as the network will be the bottleneck
       this.dataService.monitorAuthStatus(user => {
         if(user)
-          this.nav.setRoot(BeerSearchPage);
+          this.nav.setRoot(ProfilePage);
         else
           this.nav.setRoot(LoginPage);
       }, error => {

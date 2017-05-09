@@ -1,16 +1,23 @@
 page-edit-profile-page {
 
-.derp{
+.edit{
 position: relative;
 align-self: center center;
 height: 100%;
 
 }
 
-.derp ion-card {
+.edit ion-card {
     position: relative;
     align-self: center center;
     width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.edit button {
+    width: 45%;
+    align-self: right;
 }
 
 }

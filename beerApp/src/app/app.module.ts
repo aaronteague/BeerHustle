@@ -16,6 +16,7 @@ import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 import { ProductPage } from '../pages/product/product';
 import {PurchasePage} from '../pages/purchase/purchase';
  
+import { ImagePicker } from '@ionic-native/image-picker';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -64,9 +65,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   providers: [
     StatusBar,
+    ImagePicker,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataService
+    
   ]
 })
 export class AppModule {}

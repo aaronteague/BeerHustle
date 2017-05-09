@@ -115,9 +115,20 @@ export class DataService {
     });
   }
 
+  BlobToUrl(uid: string, blob: any): firebase.Promise<any>{
+    return firebase.storage().ref().child(uid).put(blob);
+  }
 
-  saveUserData(dataToPersist: any): firebase.Promise<any>{
-    return firebase.database().ref('/Users/' + firebase.auth().currentUser.uid).set(dataToPersist);
+
+  saveUserData(dataToPersist: any){
+    let uid = firebase.auth().currentUser.uid;
+    this.BlobToUrl(uid, dataToPersist.photoBlob).then(result => {
+      firebase.auth().currentUser.updateProfile({
+      displayName: dataToPersist.FirstName,
+      photoURL: result.downloadURL
+      });
+    });
+     
   }
 
   logout(){

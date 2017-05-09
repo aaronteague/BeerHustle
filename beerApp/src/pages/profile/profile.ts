@@ -49,7 +49,7 @@ export class ProfilePage {
      let modal = this.modalCtrl.create(EditProfilePagePage, {userInfo : this.userProfile});
      modal.onDidDismiss(data => {
        if(data)
-         this.dataService.saveUserData(data).catch(e => console.log(e));
+         this.dataService.saveUserData(data);
      });
      modal.present();
   }
