@@ -42,6 +42,9 @@ export class DataService {
 
         // add to the Sales list
         firebase.database().ref('Sales').child(order.key).set(order.val());
+
+        // put copy in user in their uid
+        firebase.database().ref('Users/' + order.val().user + '/Orders').child(order.key).set(order.val());
     }
 
     removeEdit(){

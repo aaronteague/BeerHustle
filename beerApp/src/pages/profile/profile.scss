@@ -40,19 +40,21 @@ page-profile {
     width: 100%;
     padding: 0;
     margin: 0;
-    color: green;
+    //color: green;
     font-size: 12px;
-
-    top: 40%;
+    
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    
 }
 
 .scoreBarOuter {
-    background-color: blue;
+    background-color: #3a3a3a;
     height: 80%;
     width: 50%;
     position: absolute;
+    border-radius: 3px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -62,7 +64,8 @@ page-profile {
 .scoreBarInner {
     position: absolute;
     bottom: 0;
-    background-color: green;
+    background-color: #96cc45;
+    border-radius: 3px;
     height: 80%;
     width: 100%;
 }

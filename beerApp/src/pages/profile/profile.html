@@ -18,7 +18,8 @@
 
 <ion-content padding class="background">
 <div  *ngIf="userProfile" class="profileInfo">
-  <h1>Level: {{getLevel()}}</h1>
+  <h1>Level: <b>{{currentColor}}</b></h1>
+  
 
 
   <!--<p *ngIf="userExtraData"> {{userExtraData.points}} <br> points</p>-->
@@ -39,11 +40,11 @@
 
     <ion-col>
       <div class="points">
-        <p>
-          70
+        <p *ngIf="userExtraData">
+          {{userExtraData.points}}
         </p>
-        <h1>
-          +13
+        <h1 [@display]="pointAddIndicatorStatus">
+          {{pointAddIndicator}}
         </h1>
       </div>
     </ion-col>

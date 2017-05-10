@@ -4,31 +4,10 @@ import { NavController, NavParams, Content, LoadingController } from 'ionic-angu
 import {trigger,state,style,animate,transition} from '@angular/animations';
 
 import {ProductPage} from '../../pages/product/product';
-
-//import {Queue} from '../../queue';
 import * as Collections from 'typescript-collections';
-
-
-
-
-
-
 
 import { DataService } from '../../providers/data-service';
 
-
-// export class BeerItem {
-//   index: number;
-//   name: string;
-//   description: string;
-//   filePath: string;
-//   design = {
-//     imgOffsetX: 0,
-//     imgOffset: 0,
-//     textColor: "#fff"
-//   };
-//   itemLoaded: string = 'invisable';
-// }
 
 @Component({
   selector: 'page-beer-search',
@@ -52,8 +31,6 @@ import { DataService } from '../../providers/data-service';
 
 export class BeerSearchPage {
 
-  // dropList: Queue<any>;
-  // dropList2: any[];
   dropList = new Collections.Queue();
   okToDrop: boolean = true;
   dropDelay: number = 50;

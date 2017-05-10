@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
-//import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-//import {Observable} from 'rxjs/Rx';
-//import 'rxjs/add/operator/promise';
 
 import * as firebase from 'firebase';
-//import {AngularFire, FirebaseListObservable, AuthProviders, AuthMethods, FirebaseAuthState, FirebaseObjectObservable} from 'angularfire2';
 import * as keys from '../../../keys';
 
 
@@ -38,16 +34,7 @@ export class DataService {
      textColor: "#fff"
    }
 
-  
 
-  //  defaultOrder = {
-  //    quantity: 0,
-  //    total: 0,
-  //    item: "none",
-  //    paymentType: "cash",
-  //    payment: "pending",
-  //    delivered: false
-  //  }
 
 
   constructor() {  
@@ -89,7 +76,6 @@ export class DataService {
   }
 
   addDesignDataIfNeeded(beerItem: any){
-    //console.log(beerItem);
 
   }
 
@@ -99,8 +85,10 @@ export class DataService {
     productData.set(product);
   }
 
-   getUserAdditionalData(): firebase.Promise<any> {
-     return firebase.database().ref('/Users/' + firebase.auth().currentUser.uid).once('value');
+   getUserAdditionalData(onceFunc: any) {
+     console.log(firebase.auth().currentUser.uid);
+    firebase.database().ref('/Users/').child(firebase.auth().currentUser.uid).on('value', (data) => onceFunc(data.val()));
+
    }
 
   loginEmail(email: string, password: string): firebase.Promise<any> {
@@ -155,25 +143,23 @@ export class DataService {
     fbQuery.on('child_changed', (data) => changeFunc(data.val()));
     fbQuery.on('child_removed', (data) => removeFunc(data.val()));
 
-
-
-    // let refreshBeerArray = (snapshot: any) => {
-    //         let beerArray: any[] = [];
-    //   snapshot.forEach(function(childSnapshot){
-        
-    //     //this.addDesignDataIfNeeded(childSnapshot);
-    //     beerArray.push(childSnapshot.val());
-    //     return false;
-    //   });
-
-    //   onChangeFunction(beerArray);
-    // };
-
-    // let fbList = firebase.database().ref('BeerList').orderByChild('index');
-
-    // fbList.once('value', refreshBeerArray);
   }
 
+  getCompletedOrders(addFunc: any){
+    let fbQuery = firebase.database().ref('Users/' + firebase.auth().currentUser.uid + '/Orders');
+    
+    fbQuery.on('child_added', (data) => addFunc(data.val()));
+  }
+
+  addPointsToUser(points: number, order: any){
+    
+    firebase.database().ref('Users/' + firebase.auth().currentUser.uid).once('value', (data) =>{
+      // add the points to the points variable
+      firebase.database().ref('Users/' + firebase.auth().currentUser.uid).child('points').set(data.val().points + points);
+      // remove the order from orders
+      firebase.database().ref('Users/' + firebase.auth().currentUser.uid + '/Orders').child(order.date).remove();
+    });
+  }
 
 
 
