@@ -127,7 +127,7 @@ export class DataService {
       firebase.auth().currentUser.updateProfile(
         {
           displayName: firstName + " " + lastName, 
-          photoURL: "https://firebasestorage.googleapis.com/v0/b/beerapp-7f31b.appspot.com/o/defaultProfilePic.jpg?alt=media&token=c7469d20-e9d7-44ab-b798-4d4adcaea3b3"
+          photoURL: "https://firebasestorage.googleapis.com/v0/b/beerapp-7f31b.appspot.com/o/defaultProfilePic2.jpg?alt=media&token=fe4544d0-7740-4526-978f-20595e7dbd99"
         })
     });
   }

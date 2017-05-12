@@ -13,7 +13,7 @@
 
 <ion-content padding class="background">
 <div  *ngIf="userProfile" class="profileInfo">
-  <h1>Level: <b>{{currentColor}}</b></h1>
+  <h1>Level: <b>{{currentRank.display}}</b></h1>
   
 
 
@@ -21,7 +21,7 @@
 
     <ion-col>
       <div class="scoreBarOuter">
-        <div class="scoreBarInner">
+        <div class="scoreBarInner" [ngStyle]="{'height': progressPercentString}">
         </div>
       </div>
     </ion-col>
