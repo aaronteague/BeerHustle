@@ -21,8 +21,6 @@ import { DataService } from '../providers/data-service';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  //rootPage: any = LoginPage;
-  //authKey: any;
 
   pages: Array<{title: string, component: any}>;
 
@@ -62,11 +60,6 @@ export class MyApp {
     });
   }
 
-  // presentLoginScreen(){
-  //   let loginScreenModal = this.modalCtrl.create(LoginPage);
-  //   loginScreenModal.present();
-  //   //this.nav.push(LoginPage);
-  // }
 
   openPage(page) {
     // Reset the content nav to have just this page

@@ -1,11 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-// import { Page1 } from '../pages/page1/page1';
-// import { Page2 } from '../pages/page2/page2';
 
-//import { EditProfilePagePage } from '../pages/edit-profile-page/edit-profile-page';
-//import { HttpModule } from '@angular/http'; // is this needed?
 import { EditProfilePagePage } from '../pages/edit-profile-page/edit-profile-page';
 import { SignUpPage } from '../pages/sign-up-page/sign-up-page';
 
@@ -32,7 +28,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 
-// import { AngularFireModule} from 'angularfire2';
+
 
 
 @NgModule({

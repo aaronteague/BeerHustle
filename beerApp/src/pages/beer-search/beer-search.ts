@@ -58,18 +58,13 @@ export class BeerSearchPage {
 
   ionViewDidLoad() {
 
-    // let loader = this.loadingCtrl.create({
-    //   content: "Retrieving items..."
-    // });
-    // loader.present();
 
     
     
     this.dataService.getBeerListing(
       // add func
       (data) => { 
-        // if(loader)
-        //   {loader.dismiss(); loader=null}; 
+
           this.fullList.push(data);
          if(data.featured)
            this.beerSelection.featured.push(data); 
@@ -102,8 +97,7 @@ export class BeerSearchPage {
   }
 
   loadedImg(){
-    // https://blog.thecodecampus.de/angular-2-animate-creating-sliding-side-navigation/
-    //console.log("loaded image");
+
   }
 
   buildBeerSelection(){
@@ -127,7 +121,6 @@ export class BeerSearchPage {
   }
 
   productClicked(e: any, product: any){
-    console.log(e);
 
     if(!e.ctrlKey && !e.metaKey)
       this.navCtrl.push(ProductPage, {
@@ -162,11 +155,8 @@ export class BeerSearchPage {
     
     if(this.dropList.size() > 0){
       this.okToDrop = false;
-      //let item = this.dropList.dequeue();
       let item = this.dropList.dequeue() as any;
-      // console.log(item);
       item.itemLoaded = 'placed';
-      //setTimeout(this.dropNext(), 5000)
       setTimeout(()=>{
         this.dropNext();
       }, this.dropDelay);
@@ -175,8 +165,7 @@ export class BeerSearchPage {
   }
 
   itemLoaded(item: any){
-    //this.dropList.enqueue(item);
-    //this.dropList2.push(item);
+
     this.dropList.enqueue(item);
     if(this.okToDrop)
       this.dropNext();

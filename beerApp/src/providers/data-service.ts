@@ -41,8 +41,6 @@ export class DataService {
 
     firebase.initializeApp(keys.firebaseConfig);
 
-    //test stuff
-    
   }
 
   submitOrder(itemName: string, quantity: number, total: number, paymentType: string): firebase.Promise<any>{
@@ -131,7 +129,6 @@ export class DataService {
           displayName: firstName + " " + lastName, 
           photoURL: "https://firebasestorage.googleapis.com/v0/b/beerapp-7f31b.appspot.com/o/defaultProfilePic.jpg?alt=media&token=c7469d20-e9d7-44ab-b798-4d4adcaea3b3"
         })
-      //this.addUserVariablesIfNeeded(firebase.auth().currentUser);
     });
   }
 

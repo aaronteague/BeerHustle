@@ -2,12 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { DataService } from '../../providers/data-service';
 
-/*
-  Generated class for the ForgotPassword page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-forgot-password',
   templateUrl: 'forgot-password.html'
@@ -23,7 +18,6 @@ export class ForgotPasswordPage {
   }
 
   ionViewDidLoad() {
-   // console.log('ionViewDidLoad ForgotPasswordPage');
   }
 
   sendReset() {

@@ -31,14 +31,11 @@ export class ProfilePage {
   pointAddIndicator: string = "";
   pointAddIndicatorStatus: string = 'start';
 
-  //auth: any = null;
   userProfile: any = null;
   userExtraData: any = null;
   currentColor: string = "invalid";
-  //pointsNumber: number = 0;
   
   
-  //result: string;
 
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams, public dataService: DataService) 
   {
@@ -48,7 +45,6 @@ export class ProfilePage {
   ionViewDidLoad() {
     this.userProfile = this.dataService.getUser();
     
-    //this.dataService.getUserAdditionalData().then(e => {this.userExtraData = e.val(); console.log(this.userExtraData)});
     this.dataService.getUserAdditionalData((data) => {this.userExtraData = data; this.getLevel();});
     this.consumePoints();
   }

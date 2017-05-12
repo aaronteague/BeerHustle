@@ -3,12 +3,7 @@ import { NavController, NavParams, ViewController, ToastController, AlertControl
 
 import { DataService } from '../../providers/data-service'
 
-/*
-  Generated class for the SignUpPage page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-sign-up-page',
   templateUrl: 'sign-up-page.html'
@@ -57,7 +52,6 @@ export class SignUpPage {
       }).catch(e => {
         this.displayError(e.message);
       });
-      //this.viewCtrl.dismiss({'email': this.email, 'password': this.password, 'firstName': this.firstName, 'lastName': this.lastName});
       
     }
 
@@ -65,7 +59,6 @@ export class SignUpPage {
   }
 
   displayError(error: string){
-    //console.log(error);
     let toast = this.toastCtrl.create({
       message: error,
       duration: 3000
@@ -74,13 +67,11 @@ export class SignUpPage {
   }
 
   displaySuccess(){
-    console.log("success");
     let popup = this.alertCtrl.create({
       title: "Success!",
       subTitle: "Welcome to Beer Hustle!  Please enjoy your stay!",
       buttons: ['OK']
     });
-    //popup.onDidDismiss(() => this.navCtrl.pop());
     popup.present();
   }
 

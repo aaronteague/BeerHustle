@@ -3,12 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { DataService } from '../../providers/data-service';
 import { BeerSearchPage } from '../../pages/beer-search/beer-search';
 
-/**
- * Generated class for the PaymentPlaceholder component.
- *
- * See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
- * for more info on Angular Components.
- */
+
 @IonicPage()
 @Component({
   selector: 'payment-placeholder',
@@ -33,19 +28,15 @@ export class PaymentPlaceholder {
   }
 
   FinishOrder(){
-    // submitOrder(itemName: string, quantity: number, total: number, paymentType: string){
       this.dataService.submitOrder(this.product.title, this.quantity, this.product.price, this.paymentType).then(() => {
         this.DisplayStatus("Success!  Your beer will be out shortly!")
          this.navCtrl.pop();
          this.navCtrl.pop();
-        //this.navCtrl.setRoot(BeerSearchPage);
-        //this.navCtrl.popToRoot();
+
       }, error => {
         this.DisplayStatus(error.message);
       });
-    // this.navCtrl.pop({
-    //   'status': 'Complete'
-    // });
+
   }
 
   DisplayStatus(status: string){

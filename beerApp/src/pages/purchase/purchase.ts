@@ -4,12 +4,6 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { DataService } from '../../providers/data-service';
 
-/*
-  Generated class for the Purchase page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-purchase',
   templateUrl: 'purchase.html'
@@ -32,7 +26,6 @@ export class PurchasePage {
   }
 
   ionViewDidLoad() {
-    //console.log('ionViewDidLoad PurchasePage');
   }
 
   cancel(){
@@ -42,10 +35,8 @@ export class PurchasePage {
   makePurchase(type: string){
     this.dataService.submitOrder(this.product.title, this.quantity, this.price, 'Cash').then(() => {
       this.navCtrl.pop();
-      //this.navCtrl.pop().then(() => this.navCtrl.pop());
       
     });
-    //this.navCtrl.popToRoot();
   }
 
   payWithGoogle(){

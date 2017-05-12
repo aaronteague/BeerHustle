@@ -7,12 +7,6 @@ import {trigger,state,style,animate,transition} from '@angular/animations';
 
 import { PurchasePage } from '../../pages/purchase/purchase';
 
-/*
-  Generated class for the Product page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-product',
   templateUrl: 'product.html',
@@ -48,8 +42,7 @@ export class ProductPage {
 
   ionViewDidLoad() 
   {
-    // the following is test code while I'm working on the purchase screen
-    // TEST CODE , TEST TEST TEST
+
     
   }
 

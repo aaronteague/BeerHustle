@@ -6,20 +6,10 @@ page-beer-search {
 }
 
 ion-searchbar {
-    // $searchbar-ios-input-transition: all 300ms ease;
-    // $searchbar-ios-cancel-transition: all 300ms ease;
+
     width: 10px;
 }
 
-// ion-col {
-//     background-color: pink;
-//     height: 100px;
-// }
-
-
-// .cropped {
-//     object-fit: cover;
-// }
 
 .featured {
     position: absolute;
@@ -56,7 +46,6 @@ ion-searchbar {
 .cardHolder {
     width: 100%;
     height: 130px;
-    //background-color: pink;
 }
 
 .rest {
@@ -74,7 +63,6 @@ ion-searchbar {
     position: relative;
     margin: 0;
     padding: 0;
-    // width: 100%;
 }
 
 .rest p {

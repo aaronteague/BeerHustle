@@ -6,14 +6,7 @@ import { SignUpPage } from '../sign-up-page/sign-up-page';
 import { ForgotPasswordPage } from '../forgot-password/forgot-password';
 
 
-/*
-  Generated class for the Login page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
-
-//var authKey: any;
 
 @Component({
   selector: 'page-login',
@@ -44,7 +37,6 @@ export class LoginPage {
       dataService: this.dataService
     });
     modal.present();
-    //this.navCtrl.push(ForgotPasswordPage);
   }
 
   signUp(){
