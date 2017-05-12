@@ -20,7 +20,7 @@
 
 
 <ion-list *ngIf="searchedList">
-  <ion-item  *ngFor="let item of searchedList">
+  <ion-item  *ngFor="let item of searchedList" (click)="productClicked($event, item)">
     <ion-thumbnail item-left>
       <img src="{{item.filePath}}">
     </ion-thumbnail>
@@ -33,7 +33,7 @@
   <ion-row *ngFor="let featuredItem of beerSelection.featured">
       <ion-col class="featuredCardHolder"  width-100 style="padding:0;margin:0;" >
         <ion-card class="featured" [@slideIn]="featuredItem.itemLoaded" (click)="productClicked($event, featuredItem)">
-          <img src="{{featuredItem.filePath}}" (load)="itemLoaded(featuredItem)">
+          <img src="{{featuredItem.filePath}}" (load)="itemLoaded(featuredItem)" [ngStyle]="{'bottom': move(featuredItem.design.imgOffsetY), 'left': move(featuredItem.design.imgOffsetX)}">
           <p>{{featuredItem.title}}</p>
         </ion-card>
         </ion-col>

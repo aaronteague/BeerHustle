@@ -38,7 +38,7 @@ export class DataService {
 
 
   constructor() {  
-    console.log("initializing firebase"); 
+
     firebase.initializeApp(keys.firebaseConfig);
 
     //test stuff
@@ -142,6 +142,7 @@ export class DataService {
     fbQuery.on('child_added', (data) => addFunc(data.val()));
     fbQuery.on('child_changed', (data) => changeFunc(data.val()));
     fbQuery.on('child_removed', (data) => removeFunc(data.val()));
+
 
   }
 
